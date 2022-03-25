@@ -1,3 +1,3 @@
 Link to Netlify:
 
-[carbon-tracker.netlify.app](carbon-tracker.netlify.app);
+[https://carbon-tracker.netlify.app/](carbon-tracker.netlify.app)
