@@ -1,9 +1,10 @@
+@use "./abstract/" as abstract;
 // @use "sass/base";
 // @use "sass/components";
-// @use "sass/layout";
+@use "./layout/" as layout;
 
 * {
-     padding: 0;
-     margin: 0;
-     box-sizing: border-box;
- }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}

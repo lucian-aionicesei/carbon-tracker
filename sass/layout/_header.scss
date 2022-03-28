@@ -1,0 +1,243 @@
+@use "../abstract/" as abstract;
+
+/* ................. nav  .......... */
+
+header {
+  background-color: abstract.$header-color;
+
+  li {
+    display: table-cell;
+    position: relative;
+    padding: 15px 0;
+  }
+
+  a {
+    color: abstract.$text-color;
+    font-weight: 200;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    display: inline-block;
+    padding: 5px 0px;
+    position: relative;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  position: relative;
+  z-index: 11;
+  transition: all 0.5s;
+}
+
+.nav_links {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  margin-left: auto;
+}
+
+/*  .......... logo ......... */
+
+.logo {
+  letter-spacing: 5px;
+  font-size: 1.1rem;
+  color: abstract.$text-color;
+  transition: ease-in 0.1s;
+  cursor: pointer;
+  padding-left: 1rem;
+  position: relative;
+  z-index: 100;
+}
+
+/*  .......... Input / intro section  ......... */
+h1 {
+  text-align: left;
+  font-size: 2.5rem;
+}
+
+.h1_text {
+  padding: 3rem;
+  width: 30rem;
+}
+
+.user_inputs {
+  padding-left: 3rem;
+  margin-bottom: 2rem;
+
+  p {
+    margin-top: 1.3rem;
+    line-height: 1.3rem;
+  }
+}
+
+.url_input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  min-width: 20rem;
+  border-width: 0px;
+  background-color: #fafae0;
+  border-style: none;
+  border-radius: 3rem;
+  width: 100%;
+  max-width: 400px;
+  min-width: 300px;
+  height: 38px;
+  margin-bottom: 1.5rem;
+}
+
+::placeholder {
+  font-size: 1rem;
+  color: #676767;
+  padding: 5px;
+}
+
+/* ............  Dropdown ................ */
+
+.dropbtn_industry {
+  cursor: pointer;
+  background: #fafae0;
+  border-radius: 13px;
+  outline: none;
+  border-style: none;
+  width: 261px;
+  height: 38px;
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.dropbtn_industry::after {
+  content: "▾";
+  color: black;
+  font-size: 2rem;
+}
+
+.changeArrow::after {
+  content: "▴";
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 261px;
+  z-index: 1;
+  text-align: left;
+}
+
+.dropdown-content_industry {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 160px;
+  z-index: 1;
+  text-align: left;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter_industry {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.filter_industry:hover {
+  background-color: rgba(201, 193, 193, 0.568);
+}
+
+.inputs_bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.calculate_btn {
+  margin-top: 1rem;
+  align-self: flex-start;
+  background-color: #9bffc2;
+  border-radius: 16px;
+  display: inline-block;
+  cursor: pointer;
+  color: #101044;
+  font-family: Arial;
+  font-size: 1.1rem;
+  padding: 13px 28px;
+  text-decoration: none;
+  border-style: none;
+}
+
+#why_section {
+  padding-left: 3rem;
+
+  hr {
+    width: 250px;
+    margin-top: 0.5rem;
+    border: 2px solid #fd7484;
+    box-shadow: 0px 0px 10px #fd7484;
+  }
+
+  .fact_why-section {
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .url_input {
+    margin-bottom: 0;
+  }
+
+  .inputs_bottom {
+    flex-direction: row;
+    gap: 15rem;
+    margin-top: 2rem;
+
+    .select {
+      align-self: flex-end;
+    }
+
+    .calculate_btn {
+      align-self: baseline;
+      margin: 0;
+    }
+  }
+
+  .fact_why-section {
+    max-width: 100ch;
+  }
+
+  .user_inputs p {
+    margin-top: 1rem;
+  }
+
+  .dropbtn_industry {
+    margin-top: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    margin-left: 10rem;
+  }
+
+  .url_input {
+    width: 715px;
+  }
+}
+
+// @media only screen and (min-width: 992px) {
+// }
+
+// @media only screen and (min-width: 1200px) {
+// }
