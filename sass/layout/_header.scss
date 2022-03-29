@@ -1,6 +1,12 @@
 @use "../abstract/" as abstract;
 
-/* ................. nav  .......... */
+/* ................. General styling .......... */
+
+body {
+  overflow-x: hidden;
+}
+
+/* ................. nav / header  .......... */
 
 header {
   background-color: abstract.$header-color;
@@ -35,8 +41,24 @@ nav {
 .nav_links {
   display: flex;
   justify-content: space-around;
-  width: 40%;
+  width: 50%;
   margin-left: auto;
+}
+
+/*  .......... Burger ......... */
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  background-color: abstract.$text-color;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.burger {
+  cursor: pointer;
+  display: none;
 }
 
 /*  .......... logo ......... */
@@ -94,7 +116,7 @@ h1 {
   padding: 5px;
 }
 
-/* ............  Dropdown ................ */
+/* ............  Dropdown menu ................ */
 
 .dropbtn_industry {
   cursor: pointer;
@@ -110,6 +132,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
+  padding-left: 1rem;
 }
 
 .dropbtn_industry::after {
@@ -158,6 +181,8 @@ h1 {
   background-color: rgba(201, 193, 193, 0.568);
 }
 
+/* ............  Input................ */
+
 .inputs_bottom {
   display: flex;
   flex-direction: column;
@@ -177,6 +202,8 @@ h1 {
   text-decoration: none;
   border-style: none;
 }
+
+/* ............  Why / fact section ................ */
 
 #why_section {
   padding-left: 3rem;
@@ -200,7 +227,7 @@ h1 {
 
   .inputs_bottom {
     flex-direction: row;
-    gap: 15rem;
+    gap: 10rem;
     margin-top: 2rem;
 
     .select {
@@ -226,9 +253,70 @@ h1 {
   }
 }
 
+@media only screen and (max-width: 700px) {
+  .nav_links {
+    position: absolute;
+    right: 0px;
+    height: 100vh;
+    top: 0vh;
+    background-color: abstract.$header-color;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    transform: translateX(100%);
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.6s;
+    z-index: 10;
+    justify-content: flex-start;
+    padding-top: 5rem;
+    font-size: 2rem;
+    gap: 3rem;
+  }
+
+  .burger {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    padding-right: 20px;
+    z-index: 99;
+  }
+
+  .nav_toggle {
+    transform: translateX(0%);
+  }
+
+  .toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+    background-color: #9bffc2;
+  }
+  .toggle .line2 {
+    opacity: 0;
+  }
+  .toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+    background-color: #9bffc2;
+  }
+
+  .hover .line1 {
+    transform: translateY(-3px);
+    transition: all 0.3s;
+    background-color: #9bffc2;
+  }
+  .hover .line2 {
+    opacity: 0;
+    transition: all 0.3s;
+    background-color: #9bffc2;
+  }
+  .hover .line3 {
+    transform: translateY(3px);
+    transition: all 0.3s;
+    background-color: #9bffc2;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   main {
-    margin-left: 10rem;
+    margin-left: 5rem;
   }
 
   .url_input {
@@ -236,8 +324,11 @@ h1 {
   }
 }
 
-// @media only screen and (min-width: 992px) {
-// }
+@media only screen and (min-width: 992px) {
+  main {
+    margin-left: 10rem;
+  }
+}
 
 // @media only screen and (min-width: 1200px) {
 // }
