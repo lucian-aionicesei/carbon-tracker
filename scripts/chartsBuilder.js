@@ -35,7 +35,7 @@ export function createTestBars() {
 }
 
 export function createDonutChart(data, canvas) {
-    let donutChart = new Chart(canvas, {
+    let donutChart = new Chart(canvas.getContext("2d"), {
         type: "doughnut",
         data: {
             datasets: [
@@ -47,6 +47,7 @@ export function createDonutChart(data, canvas) {
             ],
         },
         options: {
+            cutout: 50,
             responsive: true,
             plugins: {
                 legend: {

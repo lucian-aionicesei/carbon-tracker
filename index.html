@@ -83,8 +83,26 @@
           that’s more than the entire United Kingdom.</h2>
       </div>
     </section>
+
+    <section class="report">
+      <div class="biggest-improvement">
+        <h2>Biggest areas of improvement</h2>
+        <div class="sectors"></div>
+      </div>
+      <div class=""></div>
+    </section>
   </main>
   <footer></footer>
+
+  <template id="mostImportantTemplate">
+    <div class="improvement-sector">
+      <div class="chart-container numbered-donut">
+        <canvas class="chart"></canvas>
+        <h3 data-field="number"></h3>
+      </div>
+      <h4 data-field="title"></h4>
+    </div>
+  </template>
   <script type="module" src="/main.js"></script>
   <script type="module" src="./scripts/functionalities.js"></script>
 </body>

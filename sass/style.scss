@@ -1,6 +1,6 @@
 @use "./abstract/" as abstract;
 // @use "sass/base";
-// @use "sass/components";
+@use "./components/" as components;
 @use "./layout/" as layout;
 
 * {
