@@ -17,7 +17,3 @@ fetch(URL)
 //         return data.json();
 //     })
 //     .then((data) => console.log(data));
-
-chartBuilder.createTestPie();
-chartBuilder.createTestBars();
-chartBuilder.createTestDonut();
