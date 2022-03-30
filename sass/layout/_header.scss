@@ -152,7 +152,7 @@ h1 {
   position: absolute;
   background-color: white;
   width: 261px;
-  z-index: 1;
+  z-index: 10;
   text-align: left;
 }
 
@@ -232,15 +232,16 @@ h1 {
   position: relative;
 }
 
-#mountains {
+.mountains {
   width: 100%;
-  z-index: 10;
+  height: auto;
+  z-index: 5;
+  transform: translateY(2px) scale(1.1);
 }
 
 /* ............  Why / fact section ................ */
 
 #why_section {
-  padding-left: 3rem;
   background-color: abstract.$primary-color1;
 
   hr {
@@ -278,6 +279,7 @@ h1 {
   position: absolute;
   bottom: 0rem;
   left: 0rem;
+  z-index: 0;
 }
 
 .move {
@@ -423,9 +425,6 @@ h1 {
 }
 
 @media only screen and (max-width: 1100px) {
-  #why_section {
-    margin-left: 10rem;
-  }
 
   #input_section,
   header nav {
