@@ -19,3 +19,4 @@ fetch(URL)
 //     .then((data) => console.log(data));
 
 chartBuilder.createTestPie();
+chartBuilder.createTestBars();
