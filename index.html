@@ -1,20 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <header>
-      <h1>Test something</h1>
-      <h2>Test</h2>
-    </header>
-    <main>
-      
-    </main>
-    <footer></footer>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <h3>Logo</h3>
+      </div>
+
+      <ul class="nav_links">
+        <li>
+          <a href="#">Top sustainable</a>
+        </li>
+
+        <li>
+          <a href="#">How does it work?</a>
+        </li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="intro-section">
+      <section id="input_section">
+        <div class="h1_text">
+          <h1>Find out <br>how sustainable <br>your website is</h1>
+        </div>
+        <article class="user_inputs">
+          <input type="text" class="url_input" placeholder="Copy site url here" />
+          <div class="inputs_bottom">
+            <div class="dropdown_industry">
+              <button class="dropbtn_industry">Select industry</button>
+
+              <div class="dropdown-content">
+                <button class="filter_industry" data-filter="Food">Agriculture / Food Production</button>
+                <button class="filter_industry" data-filter="Finance">The financial sector</button>
+                <button class="filter_industry" data-filter="Clothing">Clothing and fashion industry</button>
+                <button class="filter_industry" data-filter="Tech">Tech and computer industry</button>
+                <button class="filter_industry" data-filter="Construction">Construction industry</button>
+                <button class="filter_industry" data-filter="Transport">Transport sector</button>
+                <button class="filter_industry" data-filter="Entertainment">Culture, sports and the entertainment
+                  industry</button>
+                <button class="filter_industry" data-filter="Hotel">Hotel and restaurant industry</button>
+                <button class="filter_industry" data-filter="Energy">The energy sector</button>
+                <button class="filter_industry" data-filter="Retail">Retail industry</button>
+              </div>
+            </div>
+            <button class="calculate_btn">Calculate</button>
+          </div>
+          <p>By using this carbon tracker, you agree to the information that you submit being stored and published in
+            our public database.</p>
+        </article>
+      </section>
+      <!--  add class="move"  for animation start-->
+      <div class="clouds">
+        <img id="big" class="move" src="big_cloud.svg" alt="" />
+        <img id="small" class="move_small" src="small_cloud.svg" alt="" />
+      </div>
+
+      <div class="line">
+        <img id="line" class="move_line" src="line.svg" alt="" />
+      </div>
+      <img class="mountains" src="assets/graphical-elements/mountains.svg" alt="">
+    </div>
+
+    <section id="why_section">
+      <h2>Why care?</h2>
+      <hr />
+      <div class="fact_why-section">
+        <h2>The internet consumes a lot of electricity. 416.2TWh per year to be precise. To give you some perspective,
+          that’s more than the entire United Kingdom.</h2>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="./scripts/functionalities.js"></script>
+</body>
+
 </html>
