@@ -20,3 +20,4 @@ fetch(URL)
 
 chartBuilder.createTestPie();
 chartBuilder.createTestBars();
+chartBuilder.createTestDonut();
