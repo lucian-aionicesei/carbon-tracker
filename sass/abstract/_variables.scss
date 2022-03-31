@@ -9,6 +9,11 @@ $primary-color2: #101026;
 $positive-color: #9bffc2;
 $negative-color: #fd7484;
 
-/* ............ Color variables ......... */
+/* ............ Font variables ......... */
 
 $body-font: "Inter", sans-serif;
+
+/* responsiveness */
+$phone-max-width: 500px;
+$tablet-max-width: 700px;
+$laptop-max-width: 1100px;

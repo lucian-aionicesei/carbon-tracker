@@ -1,8 +1,7 @@
 @use "../abstract/" as abstract;
 
 .report {
-    padding-top: 3rem;
-    padding-left: 3rem;
+    padding: 3rem;
     background-color: abstract.$primary-color1;
 
     article {
@@ -12,10 +11,21 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        align-items: center;
+
+        @include abstract.phone-size {
+            height: 60vh;
+            flex-direction: column;
+        }
 
         .chart-container {
             width: 40%;
             height: 100%;
+
+            @include abstract.phone-size {
+                width: 80%;
+                height: fit-content;
+            }
         }
 
         canvas {

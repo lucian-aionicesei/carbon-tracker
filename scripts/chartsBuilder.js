@@ -36,7 +36,6 @@ export function createTestBars() {
 
 // takes an array with numbers and a canvas, creates donut chart
 export function createDonutChart(data, canvas) {
-    //// fix cutout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     let donutChart = new Chart(canvas.getContext("2d"), {
         type: "doughnut",
         data: {
@@ -49,7 +48,7 @@ export function createDonutChart(data, canvas) {
             ],
         },
         options: {
-            cutout: 50,
+            cutout: "60%",
             responsive: true,
             plugins: {
                 legend: {
@@ -130,8 +129,7 @@ export function createCoupledBars(dataSet1, dataset2, labels, canvas) {
     return barsChart;
 }
 
-// change the displayed data, the animation is done by the framework
-
+// change the displayed data, newDataSets is an array of arrays which represent the data
 export function updateChartData(chart, newDataSets) {
     // console.log("update called");
     // chart.data.datasets.forEach((dataset) => {
