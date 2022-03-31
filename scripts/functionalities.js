@@ -28,6 +28,8 @@ function setup() {
   allIndustryOptions.forEach((industryOption) => {
     industryOption.addEventListener("click", getIndustry);
   });
+
+  document.querySelector(".calculate_btn").addEventListener("click", calculate);
 }
 
 function getIndustry(industryOption) {
@@ -61,4 +63,12 @@ function over() {
 }
 function done() {
   burger.classList.remove("hover");
+}
+
+function calculate() {
+  // Hide input section
+  document.querySelector("#input_section").style.display = "none";
+
+  // Show loading animation
+  document.querySelector(".center").style.display = "flex";
 }
