@@ -30,12 +30,13 @@ export function createTestBars() {
 
     let chart = createCoupledBars(testData1, testData2, labels, testCanvas);
     setTimeout(() => {
-        updateChart(chart, testData2);
+        updateChartData(chart, testData2);
     }, 2000);
 }
 
 // takes an array with numbers and a canvas, creates donut chart
 export function createDonutChart(data, canvas) {
+    //// fix cutout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     let donutChart = new Chart(canvas.getContext("2d"), {
         type: "doughnut",
         data: {
@@ -120,14 +121,7 @@ export function createCoupledBars(dataSet1, dataset2, labels, canvas) {
                 y: {
                     min: 0,
                     max: Math.max(...dataSet1.concat(dataset2)),
-                    // grid: {
-                    //     color: "#ffffff",
-                    // },
-                },
-                x: {
-                    // grid: {
-                    //     color: "#ffffff",
-                    // },
+                    display: false,
                 },
             },
         },
@@ -137,10 +131,16 @@ export function createCoupledBars(dataSet1, dataset2, labels, canvas) {
 }
 
 // change the displayed data, the animation is done by the framework
-export function updateChart(chart, newData) {
+
+export function updateChartData(chart, newDataSets) {
     // console.log("update called");
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data = newData;
-    });
+    // chart.data.datasets.forEach((dataset) => {
+    //     dataset.data = newData;
+    // });
+
+    for (let i = 0; i < chart.data.datasets.length; i++) {
+        let newIdx = i % newDataSets.length;
+        chart.data.datasets[i].data = newDataSets[newIdx];
+    }
     chart.update();
 }
