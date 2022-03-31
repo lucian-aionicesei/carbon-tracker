@@ -148,12 +148,12 @@ h1 {
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    width: 261px;
-    z-index: 1;
-    text-align: left;
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 261px;
+  z-index: 10;
+  text-align: left;
 }
 
 .dropdown-content_industry {
@@ -225,16 +225,17 @@ h1 {
     position: relative;
 }
 
-#mountains {
-    width: 100%;
-    z-index: 10;
+.mountains {
+  width: 100%;
+  height: auto;
+  z-index: 5;
+  transform: translateY(2px) scale(1.1);
 }
 
 /* ............  Why / fact section ................ */
 
 #why_section {
-    padding-left: 3rem;
-    background-color: abstract.$primary-color1;
+  background-color: abstract.$primary-color1;
 
     hr {
         width: 250px;
@@ -267,9 +268,10 @@ h1 {
 }
 
 #line {
-    position: absolute;
-    bottom: 0rem;
-    left: 0rem;
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  z-index: 0;
 }
 
 .move {
@@ -414,10 +416,7 @@ h1 {
 }
 
 @media only screen and (max-width: 1100px) {
-    #why_section {
-        margin-left: 10rem;
-    }
-
+    
     #input_section,
     header nav {
         width: 80%;
