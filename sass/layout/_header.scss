@@ -43,7 +43,7 @@ nav {
 }
 
 .nav_links {
-  display: flex;
+//   display: none;
   justify-content: space-around;
   width: auto;
   margin-left: auto;
@@ -135,6 +135,8 @@ h1 {
   align-items: center;
   font-size: 1rem;
   padding-left: 1rem;
+  z-index: 15;
+  position: relative;
 }
 
 .dropbtn_industry::after {
@@ -150,10 +152,14 @@ h1 {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
-  width: 261px;
+  background-color: #fafae0;
+  width: 20rem;
   z-index: 10;
   text-align: left;
+  padding-top: 2rem;
+  transform: translateY(-2rem);
+  border-radius: 13px;
+  overflow: hidden;
 }
 
 .dropdown-content_industry {
@@ -171,10 +177,10 @@ h1 {
 }
 
 .filter_industry {
-  background-color: white;
+  background-color: #fafae0;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 0.8rem;
   text-align: left;
   font-size: 16px;
 }
@@ -223,6 +229,7 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  overflow: hidden;
 }
 
 .mountains {
@@ -389,9 +396,15 @@ h1 {
 // .................. Media queries ..................
 
 @media only screen and (max-width: 500px) {
+  .dropdown_industry,
   .dropbtn_industry,
+  .dropdown-content,
   .url_input {
     width: 100%;
+  }
+
+  .dropdown-content {
+    width: 80%;
   }
 }
 
@@ -402,7 +415,7 @@ h1 {
     height: 100vh;
     top: 0vh;
     background-color: abstract.$header-color;
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
     align-items: center;
@@ -413,6 +426,7 @@ h1 {
     padding-top: 5rem;
     font-size: 1.5rem;
     gap: 2rem;
+    overflow-y: hidden;
   }
 
   h1 {
@@ -435,6 +449,8 @@ h1 {
   .nav_toggle {
     transform: translateX(0%);
     width: 100%;
+    z-index: 99;
+    display: flex;
   }
 
   .inputs_bottom {
