@@ -8,7 +8,7 @@ export function initReport(data) {
     ];
     const datasetBig = [488, 352, 330];
     const datasetSmall = [350, 280, 250];
-    const imageNames = ["stopjpg", "reallybig.mp4", "rick.png"];
+    const imageNames = ["1920x1080", "450x220", "800x900"];
 
     createImprovementAreas(testDataImprovement);
     fillunMinifiedJsArticle(20, 80);
