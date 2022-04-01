@@ -56,13 +56,18 @@ function fillGreenHostArticle(co2green, co2grid) {
     const article = document.querySelector("#renewable-host");
 
     article.querySelector("[data-field=size-vals]").textContent = `${(co2grid - co2green).toFixed(2)} grams or ${Math.round(greenScale * 100)}%`;
-    let svg = article.querySelector(".svg-chart svg");
+    let container = article.querySelector(".svg-chart");
+    let svg = container.querySelector("svg");
+    let text = container.querySelector("[data-field=carbon-weight]");
+    text.textContent = co2grid.toFixed(2) + "g";
 
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            svg.style.transform = `scale(${greenScale})`;
+            container.style.transform = `scale(${greenScale})`;
+            text.textContent = co2green.toFixed(2) + "g";
         } else {
-            svg.style.transform = `scale(1)`;
+            container.style.transform = `scale(1)`;
+            text.textContent = co2grid.toFixed(2) + "g";
         }
         svg.classList.toggle("positive", event.target.checked);
     });
@@ -88,7 +93,7 @@ function createImprovementAreas(areaData) {
     for (let i = 0; i < areaData.length; i++) {
         let newSector = template.content.cloneNode(true);
         newSector.querySelector("[data-field=title]").textContent = areaData[i].title;
-        newSector.querySelector(".numbered-donut [data-field=number]").textContent = areaData[i].percentageData[0];
+        newSector.querySelector(".chart-middle-text [data-field=number]").textContent = areaData[i].percentageData[0];
 
         let chart = createDonutChart(areaData[i].percentageData, newSector.querySelector("canvas.chart"));
 

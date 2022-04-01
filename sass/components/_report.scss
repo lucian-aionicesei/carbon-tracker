@@ -87,11 +87,20 @@
 }
 
 .svg-chart {
+    transition-duration: 300ms;
+
     svg{
         width: 100%;
         height: 100%;
         fill: abstract.$negative-color;
-        transition-duration: 300ms;
+    }
+
+    h3{
+        color: abstract.$text-dark;
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: Arial;
+        text-align: center;
     }
     
     .positive{
@@ -103,12 +112,12 @@
 
 
 
-.numbered-donut {
+.chart-middle-text {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
 
-    canvas {
+    .chart {
         grid-area: 1 / 1;
     }
 
