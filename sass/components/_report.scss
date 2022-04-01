@@ -85,6 +85,23 @@
     }
 }
 
+.svg-chart {
+    svg{
+        width: 100%;
+        height: 100%;
+        fill: abstract.$negative-color;
+        transition-duration: 300ms;
+    }
+    
+    .positive{
+        fill: abstract.$positive-color
+    }
+}
+
+
+
+
+
 .numbered-donut {
     display: grid;
     grid-template-columns: 1fr;

@@ -13,6 +13,7 @@ export function initReport(data) {
     createImprovementAreas(testDataImprovement);
     fillunMinifiedJsArticle(20, 80);
     fillBiggestImagesArticle(datasetBig, datasetSmall, imageNames);
+    fillGreenHostArticle(0.8, 1);
 }
 
 // fills the Elements chart and the values in the text,
@@ -24,16 +25,12 @@ function fillunMinifiedJsArticle(whiteSpaceSize, minifiedSize) {
     const chart = createPieChart([minifiedSize, whiteSpaceSize], article.querySelector("canvas.chart"));
     article.querySelector("[data-field=size-vals]").textContent = `${whiteSpaceSize}kb or ${percentage}%`;
 
-    let sliderCheckbox = article.querySelector(".toggle-container input[type=checkbox]");
-    let divider = article.querySelector("hr");
-    sliderCheckbox.addEventListener("change", (event) => {
+    setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
             updateChartData(chart, [[minifiedSize]]);
         } else {
             updateChartData(chart, [[minifiedSize, whiteSpaceSize]]);
         }
-
-        divider.classList.toggle("positive", event.target.checked);
     });
 }
 
@@ -44,17 +41,30 @@ function fillBiggestImagesArticle(datasetBig, dataSetSmall, imageNames) {
     const differences = calulateDifferencesFromArrays(datasetBig, dataSetSmall);
     article.querySelector("[data-field=size-vals]").textContent = `${differences.absolute}kb or ${differences.percentage}%`;
 
-    let sliderCheckbox = article.querySelector(".toggle-container input[type=checkbox]");
-    let divider = article.querySelector("hr");
-    sliderCheckbox.addEventListener("change", (event) => {
+    setSliderChangeFunc(article, (event) => {
         // candy: maybe update colors here too
         if (event.target.checked) {
             updateChartData(chart, [dataSetSmall, dataSetSmall]);
         } else {
             updateChartData(chart, [datasetBig, dataSetSmall]);
         }
+    });
+}
 
-        divider.classList.toggle("positive", event.target.checked);
+function fillGreenHostArticle(co2green, co2grid) {
+    const greenScale = co2green / co2grid;
+    const article = document.querySelector("#renewable-host");
+
+    article.querySelector("[data-field=size-vals]").textContent = `${(co2grid - co2green).toFixed(2)} grams or ${Math.round(greenScale * 100)}%`;
+    let svg = article.querySelector(".svg-chart svg");
+
+    setSliderChangeFunc(article, (event) => {
+        if (event.target.checked) {
+            svg.style.transform = `scale(${greenScale})`;
+        } else {
+            svg.style.transform = `scale(1)`;
+        }
+        svg.classList.toggle("positive", event.target.checked);
     });
 }
 
@@ -84,4 +94,14 @@ function createImprovementAreas(areaData) {
 
         parent.appendChild(newSector);
     }
+}
+
+function setSliderChangeFunc(article, onChange) {
+    let sliderCheckbox = article.querySelector(".toggle-container input[type=checkbox]");
+    let divider = article.querySelector("hr");
+    sliderCheckbox.addEventListener("change", (event) => {
+        onChange(event);
+
+        divider.classList.toggle("positive", event.target.checked);
+    });
 }
