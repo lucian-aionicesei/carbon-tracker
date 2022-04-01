@@ -1,4 +1,4 @@
-import { createDonutChart, createPieChart, updateChart } from "./chartsBuilder.js";
+import { createCoupledBars, createDonutChart, createPieChart, updateChartData } from "./chartsBuilder.js";
 
 export function initReport(data) {
     const testDataImprovement = [
@@ -6,9 +6,14 @@ export function initReport(data) {
         { title: "Minify code", percentageData: [75, 25] },
         { title: "Use cached files", percentageData: [27, 73] },
     ];
+    const datasetBig = [488, 352, 330];
+    const datasetSmall = [350, 280, 250];
+    const imageNames = ["1920x1080", "450x220", "800x900"];
 
     createImprovementAreas(testDataImprovement);
     fillunMinifiedJsArticle(20, 80);
+    fillBiggestImagesArticle(datasetBig, datasetSmall, imageNames);
+    fillGreenHostArticle(0.8, 1);
 }
 
 // fills the Elements chart and the values in the text,
@@ -18,20 +23,59 @@ function fillunMinifiedJsArticle(whiteSpaceSize, minifiedSize) {
     const article = document.querySelector("#unminified-js");
 
     const chart = createPieChart([minifiedSize, whiteSpaceSize], article.querySelector("canvas.chart"));
-    let sizeValContainer = article.querySelector("[data-field=size-vals]");
-    sizeValContainer.textContent = `${whiteSpaceSize}kb or ${percentage}%`;
+    article.querySelector("[data-field=size-vals]").textContent = `${whiteSpaceSize}kb or ${percentage}%`;
 
-    let sliderCheckbox = article.querySelector(".toggle-container input[type=checkbox]");
-    let divider = article.querySelector("hr");
-    sliderCheckbox.addEventListener("change", (event) => {
+    setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChart(chart, [minifiedSize]);
+            updateChartData(chart, [[minifiedSize]]);
         } else {
-            updateChart(chart, [minifiedSize, whiteSpaceSize]);
+            updateChartData(chart, [[minifiedSize, whiteSpaceSize]]);
         }
-
-        divider.classList.toggle("positive", event.target.checked);
     });
+}
+
+function fillBiggestImagesArticle(datasetBig, dataSetSmall, imageNames) {
+    const article = document.querySelector("#old-image-types");
+    const chart = createCoupledBars(datasetBig, dataSetSmall, imageNames, article.querySelector("canvas.chart"));
+
+    const differences = calulateDifferencesFromArrays(datasetBig, dataSetSmall);
+    article.querySelector("[data-field=size-vals]").textContent = `${differences.absolute}kb or ${differences.percentage}%`;
+
+    setSliderChangeFunc(article, (event) => {
+        // candy: maybe update colors here too
+        if (event.target.checked) {
+            updateChartData(chart, [dataSetSmall, dataSetSmall]);
+        } else {
+            updateChartData(chart, [datasetBig, dataSetSmall]);
+        }
+    });
+}
+
+function fillGreenHostArticle(co2green, co2grid) {
+    const greenScale = co2green / co2grid;
+    const article = document.querySelector("#renewable-host");
+
+    article.querySelector("[data-field=size-vals]").textContent = `${(co2grid - co2green).toFixed(2)} grams or ${Math.round(greenScale * 100)}%`;
+    let svg = article.querySelector(".svg-chart svg");
+
+    setSliderChangeFunc(article, (event) => {
+        if (event.target.checked) {
+            svg.style.transform = `scale(${greenScale})`;
+        } else {
+            svg.style.transform = `scale(1)`;
+        }
+        svg.classList.toggle("positive", event.target.checked);
+    });
+}
+
+// adds up all the values in the arrays. calculates the differnece in an absolute value and a percentage value.
+function calulateDifferencesFromArrays(arrayBig, arraySmall) {
+    const sumBig = arrayBig.reduce((a, b) => a + b, 0);
+    const sumSmall = arraySmall.reduce((a, b) => a + b, 0);
+    const absolute = Math.round(sumBig - sumSmall);
+    const percentage = Math.round((sumSmall / (sumBig + sumSmall)) * 100);
+
+    return { absolute, percentage };
 }
 
 // creates the "biggest Areas of Improvement" section,
@@ -50,4 +94,14 @@ function createImprovementAreas(areaData) {
 
         parent.appendChild(newSector);
     }
+}
+
+function setSliderChangeFunc(article, onChange) {
+    let sliderCheckbox = article.querySelector(".toggle-container input[type=checkbox]");
+    let divider = article.querySelector("hr");
+    sliderCheckbox.addEventListener("change", (event) => {
+        onChange(event);
+
+        divider.classList.toggle("positive", event.target.checked);
+    });
 }
