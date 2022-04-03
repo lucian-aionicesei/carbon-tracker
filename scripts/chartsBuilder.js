@@ -90,7 +90,7 @@ export function createPieChart(data, canvas) {
 
 // groups the corresponding values from dataSet1 and dataSet2 in a bar chart
 // dataSet1 and dataSet2 are arrays of numbers, labels are the group names, canvas is the element to create in.
-export function createCoupledBars(dataSet1, dataset2, labels, canvas) {
+export function createCoupledBars(dataSet1, dataset2, labels, canvas, stacked = false) {
     let barsChart = new Chart(canvas, {
         type: "bar",
         data: {
@@ -117,16 +117,24 @@ export function createCoupledBars(dataSet1, dataset2, labels, canvas) {
                 },
             },
             scales: {
+                x: {
+                    stacked: stacked,
+                },
                 y: {
                     min: 0,
                     max: Math.max(...dataSet1.concat(dataset2)),
                     display: false,
+                    stacked: stacked,
                 },
             },
         },
     });
 
     return barsChart;
+}
+
+export function createStackedBars(canvas, datasetBad, datasetGood, labels) {
+    return createCoupledBars(datasetBad, datasetGood, labels, canvas, true);
 }
 
 // change the displayed data, newDataSets is an array of arrays which represent the data
