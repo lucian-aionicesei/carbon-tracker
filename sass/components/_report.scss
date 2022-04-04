@@ -15,6 +15,10 @@
         justify-content: flex-start;
         align-items: center;
 
+        @include abstract.tablet-size{
+            margin-top: 5rem;
+        }
+
         @include abstract.phone-size {
             height: 60vh;
             flex-direction: column;
@@ -123,6 +127,10 @@
 
             .chart-container {
                 width: 40%;
+
+                @include abstract.tablet-size{
+                    width: 80%;
+                }
             }
         }
     }
