@@ -101,7 +101,7 @@ h1 {
   }
 }
 
-.url_input {
+#url_input {
   padding-left: 1rem;
   font-size: 1rem;
   border-width: 0px;
@@ -115,7 +115,7 @@ h1 {
 
 ::placeholder {
   font-size: 1rem;
-  color: #676767;
+  color: #303030;
   padding: 5px;
 }
 
@@ -134,7 +134,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
-  padding-left: 1rem;
+  padding: 0px 1rem;
   z-index: 15;
   position: relative;
 }
@@ -165,7 +165,7 @@ h1 {
 
 #input_section {
   width: 60rem;
-  margin: 0px auto;
+  margin: 2rem auto 0px auto;
   z-index: 10;
 }
 
@@ -374,7 +374,7 @@ h1 {
 
 @media only screen and (max-width: 500px) {
   #select_industry,
-  .url_input {
+  #url_input {
     width: 100%;
   }
 }

@@ -38,14 +38,12 @@ function toggle() {
 function over() {
   burger.classList.add("hover");
 }
+
 function done() {
   burger.classList.remove("hover");
 }
 
-window.calculate = calculate;
-
-function calculate() {
-  console.log("calculate");
+export function loadingScreen() {
   // Hide input section
   document.querySelector("#input_section").style.display = "none";
 
