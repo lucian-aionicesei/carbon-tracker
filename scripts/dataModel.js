@@ -1,3 +1,13 @@
+
+// Get url imput
+document.querySelector('.calculate_btn').addEventListener('click', generateResult);
+
+function generateResult() {
+    console.log("calculate button clicked");
+    const urlInput = document.querySelector('.url_input');
+    console.log(urlInput.value);
+}
+
 const pagespeedUrl = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=URLHOLDER&key=AIzaSyDVaplgnZ31AzZVkSNiFImxl5WGciW31vg";
 const websiteCarbonApiUrl = "https://kea-alt-del.dk/websitecarbon/?url=";
 

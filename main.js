@@ -6,3 +6,7 @@ initReport();
 
 await loadData("https://www.jungwachthorw.ch/");
 console.log(getUselessCodeData());
+
+function test() {
+    console.log("it's working")
+}

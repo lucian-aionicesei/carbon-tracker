@@ -43,7 +43,7 @@ nav {
 }
 
 .nav_links {
-//   display: none;
+  //   display: none;
   justify-content: space-around;
   width: auto;
   margin-left: auto;
@@ -121,7 +121,7 @@ h1 {
 
 /* ............  Dropdown menu ................ */
 
-.dropbtn_industry {
+#select_industry {
   cursor: pointer;
   background: #fafae0;
   border-radius: 13px;
@@ -139,54 +139,19 @@ h1 {
   position: relative;
 }
 
-.dropbtn_industry::after {
-  content: "▾";
-  color: black;
-  font-size: 2rem;
-}
+// #select_industry::after {
+//   content: "▾";
+//   color: black;
+//   font-size: 2rem;
+// }
 
-.changeArrow::after {
-  content: "▴";
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #fafae0;
-  width: 20rem;
-  z-index: 10;
-  text-align: left;
-  padding-top: 2rem;
-  transform: translateY(-2rem);
-  border-radius: 13px;
-  overflow: hidden;
-}
-
-.dropdown-content_industry {
-  display: none;
-  position: absolute;
-  background-color: white;
-  width: 160px;
-  z-index: 1;
-  text-align: left;
-}
+// #select_industry:focus {
+//   content: "▴";
+// }
 
 .flex {
   display: flex;
   flex-direction: column;
-}
-
-.filter_industry {
-  background-color: #fafae0;
-  border: none;
-  cursor: pointer;
-  padding: 0.8rem;
-  text-align: left;
-  font-size: 16px;
-}
-
-.filter_industry:hover {
-  background-color: rgba(201, 193, 193, 0.568);
 }
 
 /* ............  Input................ */
@@ -220,10 +185,22 @@ h1 {
   width: 9rem;
 }
 
+.disclaimer {
+  margin: 1.5rem 0px;
+  font-size: 0.9rem;
+}
+
 /* ............ Background front page .............. */
 
 .intro-section {
-  background: linear-gradient(180deg, #14142c 0%, #161f35 34.33%, #296b8f 73.46%, #a15d7f 88.88%, #ff5775 100%);
+  background: linear-gradient(
+    180deg,
+    #14142c 0%,
+    #161f35 34.33%,
+    #296b8f 73.46%,
+    #a15d7f 88.88%,
+    #ff5775 100%
+  );
   height: 110vh;
   display: flex;
   flex-direction: column;
@@ -396,15 +373,9 @@ h1 {
 // .................. Media queries ..................
 
 @media only screen and (max-width: 500px) {
-  .dropdown_industry,
-  .dropbtn_industry,
-  .dropdown-content,
+  #select_industry,
   .url_input {
     width: 100%;
-  }
-
-  .dropdown-content {
-    width: 80%;
   }
 }
 
