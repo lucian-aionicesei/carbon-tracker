@@ -15,7 +15,32 @@ export function initReport(data) {
     fillBiggestImagesArticle(datasetBig, datasetSmall, imageNames);
     fillGreenHostArticle(0.8, 1);
     fillOffscreenResources(80, 20);
+    fillOverviewStats(1.79, 90);
     setComparisonText("Finance", 0.8, 10000);
+    fillRanking(0.35, 0.7);
+}
+
+function fillOverviewStats(gramsPerView, energy) {
+    const container = document.querySelector(".overview");
+    container.querySelector("[data-field=co-per-view]").textContent = `${gramsPerView} grams of CO2 per page view`;
+    container.querySelector("[data-field=energy-per-thousand]").textContent = `${energy}kWh of energy for every 1000 visitors`;
+}
+
+function fillRanking(cleanerThan, potential) {
+    const rankingElem = document.querySelector(".ranking");
+    const cleanerThanElem = rankingElem.querySelector("[data-field=cleaner-than]");
+    const potentialElem = rankingElem.querySelector("[data-field=potential]");
+
+    cleanerThanElem.textContent = Math.round(cleanerThan * 100) + "%";
+    if (cleanerThan > 0.5) {
+        cleanerThanElem.classList.remove("negative");
+        cleanerThanElem.classList.add("positive");
+    } else {
+        cleanerThanElem.classList.remove("positive");
+        cleanerThanElem.classList.add("negative");
+    }
+
+    potentialElem.textContent = Math.round(potential * 100) + "%";
 }
 
 // fills the Elements chart and the values in the text,
@@ -107,7 +132,6 @@ function calulateDifferencesFromArrays(arrayBig, arraySmall) {
 function createImprovementAreas(areaData) {
     const parent = document.querySelector(".biggest-improvement .sectors");
     const template = document.querySelector("#mostImportantTemplate");
-    let exsiting = document.querySelectorAll(".biggest-improvement .improvement-sector");
 
     for (let i = 0; i < areaData.length; i++) {
         let newSector = template.content.cloneNode(true);
@@ -133,7 +157,7 @@ function setSliderChangeFunc(article, onChange) {
 function setComparisonText(industry, grams, visitors) {
     let container = document.querySelector(".comparison [data-field=comparison-text]");
 
-    container.innerHTML = `With ${visitors} monthly visitors this website emits <strong data-value="grams">
+    container.innerHTML = `With ${visitors} monthly visitors this website emits <strong class="negative" data-value="grams">
         ${Math.round(visitors * grams)} grams of CO2</strong>, ${getComparison(industry, grams, visitors)}, every month.`;
 }
 
