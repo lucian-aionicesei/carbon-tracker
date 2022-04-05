@@ -84,3 +84,14 @@ export function loadingScreen() {
     console.log();
   }
 }
+
+// add "https://" extention to URL if needed
+
+export function toHttpsURL(urlInput) {
+  console.log(urlInput)
+  if (!urlInput.includes("http")){
+      return `https://${urlInput}`
+  } else {
+      return urlInput;
+  }
+}
