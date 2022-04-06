@@ -1,14 +1,27 @@
 import "./sass/style.scss";
-import {initReport} from "./scripts/reportHandler.js";
-import {loadingScreen,toHttpsURL} from "./scripts/functionalities.js";
-import {getUselessCodeData,loadData} from "./scripts/dataModel";
+import {
+    initReport
+} from "./scripts/reportHandler.js";
+import {
+    loadingScreen,
+    toHttpsURL
+} from "./scripts/functionalities.js";
+import {
+    getUselessCodeData,
+    loadData
+} from "./scripts/dataModel";
 
 
 window.onload = ClearForm();
 
 // initReport();
 
-window.calculate = calculate;
+const inputUrlForm = document.querySelector("#get-url-form");
+
+inputUrlForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    calculate();
+});
 
 // Get url input
 async function calculate() {
@@ -17,8 +30,8 @@ async function calculate() {
 
     console.log("calculate");
 
-    let urlInput = document.querySelector("#url_input").value;
-    let selectedIndustry = document.querySelector("#select_industry").value;
+    let urlInput = inputUrlForm.elements.url_input.value;
+    let selectedIndustry = inputUrlForm.elements.select_industry.value;
 
     urlInput = toHttpsURL(urlInput);
 

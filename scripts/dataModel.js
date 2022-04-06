@@ -2,7 +2,7 @@
 // Get url imput
 
 const pagespeedUrl = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=URLHOLDER&key=AIzaSyDVaplgnZ31AzZVkSNiFImxl5WGciW31vg";
-const websiteCarbonApiUrl = "https://kea-alt-del.dk/websitecarbon/?url=";
+const websiteCarbonApiUrl = "https://kea-alt-del.dk/websitecarbon/site/?url=";
 
 let pagespeedData;
 let WebsiteCarbonData;
@@ -14,6 +14,7 @@ export async function loadData(testUrl) {
     //     })
     //     .then((data) => {
     //         WebsiteCarbonData = data;
+    //         console.log(data);
     //     });
 
     await fetch(pagespeedUrl.replace("URLHOLDER", testUrl))
