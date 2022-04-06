@@ -1,5 +1,4 @@
 "use strict";
-// shuffle array package
 
 window.addEventListener("load", setup);
 
@@ -7,6 +6,8 @@ const burger = document.querySelector(".burger");
 const links = document.querySelector(".nav_links");
 
 function setup() {
+  document.querySelector("#big").addEventListener("animationend", cloudsAnimation);
+  document.querySelector("#small").addEventListener("animationend", cloudsAnimation);
 
   // Burger menu
   burger.addEventListener("click", toggle);
@@ -20,7 +21,14 @@ function setup() {
 
 function getIndustry(industryOption) {
   // Get option value
+}
 
+function cloudsAnimation() {
+  document.querySelector("#big").classList.remove("move");
+  document.querySelector("#small").classList.remove("move_small");
+
+  document.querySelector("#big").classList.add("move1");
+  document.querySelector("#small").classList.add("move_small1");
 }
 
 function toggle() {
@@ -50,7 +58,7 @@ export function loadingScreen() {
   // Show loading animation
   document.querySelector(".center").style.display = "flex";
 
-  const firstFact = Math.floor(Math.random() * 9 + 1);
+  const firstFact = Math.floor(Math.random() * 9);
 
   const factText = document.querySelector(".center p");
 
@@ -84,7 +92,7 @@ export function loadingScreen() {
 
   function changeFact() {
     console.log("changeFact");
-    const randomFact = Math.floor(Math.random() * 9 + 1);
+    const randomFact = Math.floor(Math.random() * 9);
 
     factText.textContent = facts[randomFact];
     console.log(randomFact);
@@ -118,10 +126,10 @@ share();
 // add "https://" extention to URL if needed
 
 export function toHttpsURL(urlInput) {
-  console.log(urlInput)
-  if (!urlInput.includes("http")){
-      return `https://${urlInput}`
+  console.log(urlInput);
+  if (!urlInput.includes("http")) {
+    return `https://${urlInput}`;
   } else {
-      return urlInput;
+    return urlInput;
   }
 }

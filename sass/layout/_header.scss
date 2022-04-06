@@ -254,13 +254,13 @@ h1 {
 .move {
   animation-name: move_kf;
   animation-duration: 35s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   animation-timing-function: linear;
 }
 
 @keyframes move_kf {
   0% {
-    transform: translateX(-50vw);
+    transform: translateX(0);
   }
 
   100% {
@@ -271,11 +271,45 @@ h1 {
 .move_small {
   animation-name: move_small_kf;
   animation-duration: 40s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   animation-timing-function: linear;
 }
 
 @keyframes move_small_kf {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.move1 {
+  animation-name: move1_kf;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes move1_kf {
+  0% {
+    transform: translateX(-50vw);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.move_small1 {
+  animation-name: move_small1_kf;
+  animation-duration: 40s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes move_small1_kf {
   0% {
     transform: translateX(-100vw);
   }
@@ -295,11 +329,11 @@ h1 {
 
 @keyframes move_line_kf {
   0% {
-    transform: translate(0px) rotate(-20deg);
+    transform: translate(-5vw, -10vw) rotate(-30deg);
   }
 
   100% {
-    transform: translate(100vw, -30vw) rotate(-20deg);
+    transform: translate(100vw, -70vw) rotate(-30deg);
   }
 }
 
@@ -315,7 +349,6 @@ h1 {
   margin: 0;
   background: transparent;
   border-top: 5px solid rgba(253, 116, 132, 1);
-
   border-radius: 50%;
   -webkit-animation: 1s spin linear infinite;
   animation: 1s spin linear infinite;
@@ -331,6 +364,7 @@ h1 {
   width: 100%;
   height: 70%;
   flex-direction: column;
+  z-index: 100;
 }
 
 .center p {
