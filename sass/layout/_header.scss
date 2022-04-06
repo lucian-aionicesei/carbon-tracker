@@ -193,14 +193,7 @@ h1 {
 /* ............ Background front page .............. */
 
 .intro-section {
-  background: linear-gradient(
-    180deg,
-    #14142c 0%,
-    #161f35 34.33%,
-    #296b8f 73.46%,
-    #a15d7f 88.88%,
-    #ff5775 100%
-  );
+  background: linear-gradient(180deg, #14142c 0%, #161f35 34.33%, #296b8f 73.46%, #a15d7f 88.88%, #ff5775 100%);
   height: 110vh;
   display: flex;
   flex-direction: column;
@@ -368,6 +361,18 @@ h1 {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+// .................. Comparison section ..................
+
+#comparison {
+  background-color: abstract.$primary-color1;
+}
+
+.fact_container {
+  padding-inline: 10%;
+  line-height: 2rem;
+  padding-block: 4rem;
 }
 
 // .................. Share section ..................
