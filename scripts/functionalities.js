@@ -43,12 +43,28 @@ function done() {
   burger.classList.remove("hover");
 }
 
-export function loadingScreen() {
-  // Hide input section
-  document.querySelector("#input_section").style.display = "none";
 
-  // Show loading animation
-  document.querySelector(".center").style.display = "flex";
+let factsLoop;
+
+export function loadingScreen(status) {
+
+  clearInterval(factsLoop);
+
+  console.log(status);
+  if (status === true) {
+    // Hide/show input section
+    document.querySelector("#input_section").style.display = "none";
+
+    // Show loading animation
+    document.querySelector(".center").style.display = "flex";
+  } else {
+    // Hide/show input section
+    document.querySelector("#input_section").style.display = "block";
+
+    // Show loading animation
+    document.querySelector(".center").style.display = "none";
+  }
+
 
   const firstFact = Math.floor(Math.random() * 9 + 1);
 
@@ -80,11 +96,15 @@ export function loadingScreen() {
 
   factText.textContent = facts[firstFact];
 
-  setInterval(changeFact, 6500);
+  if (status === true) {
+    factsLoop = setInterval(changeFact, 6500);
+  } else {
+    clearInterval(factsLoop);
+  }
 
   function changeFact() {
     console.log("changeFact");
-    const randomFact = Math.floor(Math.random() * 9 + 1);
+    const randomFact = Math.floor(Math.random() * 8 + 1);
 
     factText.textContent = facts[randomFact];
     console.log(randomFact);
@@ -119,9 +139,9 @@ share();
 
 export function toHttpsURL(urlInput) {
   console.log(urlInput)
-  if (!urlInput.includes("http")){
-      return `https://${urlInput}`
+  if (!urlInput.includes("http")) {
+    return `https://${urlInput}`
   } else {
-      return urlInput;
+    return urlInput;
   }
 }

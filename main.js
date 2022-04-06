@@ -7,42 +7,51 @@ import {
     toHttpsURL
 } from "./scripts/functionalities.js";
 import {
-    getUselessCodeData,
-    loadData
+    generateCarbonResult,
+    generateSpeedresult,
+    getUselessCodeData
 } from "./scripts/dataModel";
 
 
-window.onload = ClearForm();
+window.onload = clearForm();
 
-initReport();
+// initReport();
 
 const inputUrl = document.querySelector("#get-url-form");
 
-inputUrl.addEventListener("submit", (e) => {
-    e.preventDefault();
+inputUrl.addEventListener("submit", (data) => {
+    data.preventDefault();
     calculate();
 });
 
 // Get url input
 async function calculate() {
 
-    loadingScreen()
+    loadingScreen(true);
 
     console.log("calculate");
 
     let urlInput = inputUrl.elements.url_input.value;
     let selectedIndustry = inputUrl.elements.select_industry.value;
 
-    urlInput = toHttpsURL(urlInput);
+    urlInput = new URL(toHttpsURL(urlInput));
 
     console.log(urlInput, selectedIndustry);
 
-    await loadData(urlInput);
-    console.log(getUselessCodeData());
+    await generateCarbonResult(urlInput);
+    await generateSpeedresult(urlInput);
+
+    
+    loadingScreen(false)
+    clearForm();
+    initReport();
+    console.log("Data received");
+    // await loadData(urlInput);
+    // console.log(getUselessCodeData());
 }
 
 
-function ClearForm() {
+function clearForm() {
     console.log("Window has been reloaded");
     document.querySelector("#get-url-form").reset();
 }

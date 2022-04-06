@@ -4,12 +4,13 @@
 @use "./layout/" as layout;
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: abstract.$body-font;
-    color: abstract.$text-color;
+  font-family: abstract.$body-font;
+  color: abstract.$text-color;
+  scroll-behavior: smooth;
 }

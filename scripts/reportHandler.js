@@ -1,6 +1,6 @@
 import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData } from "./chartsBuilder.js";
 
-export function initReport(data) {
+export function initReport(carbonData, speedData) {
     const testDataImprovement = [
         { title: "Reduce image Size", percentageData: [55, 45] },
         { title: "Minify code", percentageData: [75, 25] },
@@ -18,6 +18,10 @@ export function initReport(data) {
     fillOverviewStats(1.79, 90);
     setComparisonText("Finance", 0.8, 10000);
     fillRanking(0.35, 0.7);
+
+    document.querySelector('#main-url').scrollIntoView({
+        behavior: 'smooth'
+      });
 }
 
 function fillOverviewStats(gramsPerView, energy) {
