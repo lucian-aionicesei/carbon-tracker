@@ -14,11 +14,11 @@ import {
 
 window.onload = ClearForm();
 
-// initReport();
+initReport();
 
-const inputUrlForm = document.querySelector("#get-url-form");
+const inputUrl = document.querySelector("#get-url-form");
 
-inputUrlForm.addEventListener("submit", (e) => {
+inputUrl.addEventListener("submit", (e) => {
     e.preventDefault();
     calculate();
 });
@@ -30,8 +30,8 @@ async function calculate() {
 
     console.log("calculate");
 
-    let urlInput = inputUrlForm.elements.url_input.value;
-    let selectedIndustry = inputUrlForm.elements.select_industry.value;
+    let urlInput = inputUrl.elements.url_input.value;
+    let selectedIndustry = inputUrl.elements.select_industry.value;
 
     urlInput = toHttpsURL(urlInput);
 
