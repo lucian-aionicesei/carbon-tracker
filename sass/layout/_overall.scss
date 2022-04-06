@@ -23,7 +23,7 @@ main{
 }
 
 section{
-    margin-top: 15vh;
+    padding-top: 15vh;
 
     @include abstract.phone-size{
         margin-top: 10vh;
