@@ -1,0 +1,57 @@
+@use "../abstract/" as abstract;
+
+h1{
+    font-size: 4.209rem;
+    
+    @include abstract.phone-size{
+        font-size: 3.157rem;
+    }
+}
+
+h2{
+    font-size: 3.157rem;
+    padding: 2rem 0;
+
+    @include abstract.phone-size{
+        font-size: 2.369rem;
+    }
+}
+
+h3{
+    font-size: 2.369rem;
+    line-height: 1.3;
+
+    @include abstract.phone-size{
+        font-size: 1.777rem;
+    }
+}
+
+h4{
+    font-size: 1.777rem;
+    font-weight: normal;
+
+    @include abstract.phone-size{
+        font-size: 1.333rem;
+    }
+}
+
+
+p{
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-style: normal;
+
+    @include abstract.phone-size{
+        font-size: 1rem;
+    }
+}
+
+p.exclamation{
+    line-height: 1.6;
+    font-size: 1.777rem;
+    // font-weight: bold;
+
+    @include abstract.phone-size{
+        font-size: 1.333rem
+    }
+}

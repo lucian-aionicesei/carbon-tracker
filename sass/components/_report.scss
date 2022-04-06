@@ -1,13 +1,9 @@
 @use "../abstract/" as abstract;
 
 .report {
-    padding: 3rem;
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: abstract.$primary-color1;
 
     article {
-        margin-top: 10rem;
+
         height: 30vh;
         width: 100%;
         display: flex;
@@ -52,6 +48,11 @@
             color: abstract.$positive-color;
         }
     }
+    
+    // do dannies fancy tricks to apply the top padding for all except the first one
+    article + article{
+        margin-top: 10rem;
+    }
 
     hr {
         margin-top: 1rem;
@@ -69,12 +70,12 @@
     }
 
     #main-url{
-        color: white;
-        font-size: 3rem;
-        font-weight: bold;
+        color: abstract.$text-color;
         display: block;
         width: 100%;
         text-align: center;
+        // I have to set the font size here, because the text-decoration is scaled by that, and won't do it if its from another class.
+        font-size: 3.157rem;
         text-decoration-color: abstract.$positive-color;
     }
 
@@ -84,8 +85,7 @@
         padding-bottom: 5rem;
     }
 
-    h2, h3{
-        
+    h2, h3, p{
 
         .positive{
             color: abstract.$positive-color;
@@ -96,23 +96,38 @@
         }
     }
 
-    .overview{
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+    .overview, .comparison{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 30vh;
 
-        .comparison{
-            padding-top: 3rem;
+        @include abstract.phone-size{
+            min-height: 25vh;
+        }
+    }
+
+    .comparison{
+        min-height: 25vh;
+
+        @include abstract.phone-size{
+            min-height: 20vh;
         }
     }
 
     .biggest-improvement {
-        h2{
+        >h3{
             padding-bottom: 1.5rem;
         }
+
         .sectors {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
+
+            @include abstract.phone-size{
+                // flex-direction: column;
+            }
         }
 
         .improvement-sector {
@@ -133,6 +148,10 @@
                 }
             }
         }
+    }
+
+    div.improvements{
+        margin-top: 5rem;
     }
 
     .svg-chart {
