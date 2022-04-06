@@ -115,7 +115,7 @@ h1 {
 
 ::placeholder {
   font-size: 1rem;
-  color: #303030;
+  color: abstract.$text-dark;
   padding: 5px;
 }
 
@@ -139,15 +139,7 @@ h1 {
   position: relative;
 }
 
-// #select_industry::after {
-//   content: "▾";
-//   color: black;
-//   font-size: 2rem;
-// }
 
-// #select_industry:focus {
-//   content: "▴";
-// }
 
 .flex {
   display: flex;
@@ -171,11 +163,11 @@ h1 {
 
 .calculate_btn {
   align-self: flex-start;
-  background-color: #9bffc2;
+  background-color: abstract.$positive-color;
   border-radius: 16px;
   display: inline-block;
   cursor: pointer;
-  color: #101044;
+  color: abstract.$text-dark;
   font-family: Arial;
   font-size: 1.1rem;
   padding: 0px 2rem;
@@ -219,7 +211,6 @@ h1 {
 /* ............  Why / fact section ................ */
 
 #why_section {
-  background-color: abstract.$primary-color1;
 
   hr {
     width: 250px;
@@ -373,7 +364,6 @@ h1 {
 // .................. Share section ..................
 
 #share {
-  background-color: abstract.$primary-color1;
   padding-top: 4rem;
   display: grid;
   justify-content: center;
@@ -387,13 +377,13 @@ h1 {
 .generated_url {
   margin-top: 2rem;
   font-size: 1rem;
-  border: 1px solid #ffff;
-  background-color: #14142c;
+  border: 1px solid abstract.$text-color;
+  background-color: abstract.$primary-color1;
   border-radius: 42px;
   width: 85%;
   height: 3rem;
   margin-bottom: 1.5rem;
-  color: #ffff;
+  color: abstract.$text-color;
   padding-left: 1rem;
 }
 
@@ -425,7 +415,6 @@ h1 {
 
 .so-me i {
   font-size: 3rem;
-  color: #ffff;
   cursor: pointer;
 }
 
@@ -494,30 +483,30 @@ h1 {
 
   .toggle .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
-    background-color: #9bffc2;
+    background-color: abstract.$positive-color;
   }
   .toggle .line2 {
     opacity: 0;
   }
   .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -7px);
-    background-color: #9bffc2;
+    background-color: abstract.$positive-color;
   }
 
   .hover .line1 {
     transform: translateY(-3px);
     transition: all 0.3s;
-    background-color: #9bffc2;
+    background-color: abstract.$positive-color;
   }
   .hover .line2 {
     opacity: 0;
     transition: all 0.3s;
-    background-color: #9bffc2;
+    background-color: abstract.$positive-color;
   }
   .hover .line3 {
     transform: translateY(3px);
     transition: all 0.3s;
-    background-color: #9bffc2;
+    background-color: abstract.$positive-color;
   }
 }
 
