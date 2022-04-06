@@ -1,111 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carbon Tracker</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
-</head>
+    <!-- font-awesome icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  </head>
 
-<body>
-  <header>
-    <nav>
-      <div class="logo">
-        <h3>Logo</h3>
-      </div>
-
-      <ul class="nav_links">
-        <li>
-          <a href="#">Top sustainable</a>
-        </li>
-
-        <li>
-          <a href="#">How does it work?</a>
-        </li>
-      </ul>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <div class="intro-section">
-      <div class="center">
-        <div class="nb-spinner"></div>
-        <p>Pornography accounts for a third of video streaming traffic, generating as much carbon dioxide as Belgium in a year.</p>
-      </div>
-      <section id="input_section">
-        <div class="h1_text">
-          <h1>Find out <br>how sustainable <br>your website is</h1>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <h3>Logo</h3>
         </div>
-        <article class="user_inputs">
-          <input type="text" class="url_input" placeholder="Copy site url here" />
-          <div class="inputs_bottom">
-            <div class="dropdown_industry">
-              <button class="dropbtn_industry">Select industry</button>
 
-              <div class="dropdown-content">
-                <button class="filter_industry" data-filter="Food">Agriculture / Food Production</button>
-                <button class="filter_industry" data-filter="Finance">The financial sector</button>
-                <button class="filter_industry" data-filter="Clothing">Clothing and fashion industry</button>
-                <button class="filter_industry" data-filter="Tech">Tech and computer industry</button>
-                <button class="filter_industry" data-filter="Construction">Construction industry</button>
-                <button class="filter_industry" data-filter="Transport">Transport sector</button>
-                <button class="filter_industry" data-filter="Entertainment">Culture, sports and the entertainment
-                  industry</button>
-                <button class="filter_industry" data-filter="Hotel">Hotel and restaurant industry</button>
-                <button class="filter_industry" data-filter="Energy">The energy sector</button>
-                <button class="filter_industry" data-filter="Retail">Retail industry</button>
-              </div>
-            </div>
-            <button class="calculate_btn">Calculate</button>
+        <ul class="nav_links">
+          <li>
+            <a href="#">Top sustainable</a>
+          </li>
+
+          <li>
+            <a href="#">How does it work?</a>
+          </li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="intro-section">
+        <div class="center">
+          <div class="nb-spinner"></div>
+          <p>Pornography accounts for a third of video streaming traffic, generating as much carbon dioxide as Belgium in a year.</p>
+        </div>
+        <section id="input_section">
+          <div class="h1_text">
+            <h1>Find out <br />how sustainable <br />your website is</h1>
           </div>
-          <p>By using this carbon tracker, you agree to the information that you submit being stored and published in
-            our public database.</p>            
-        </article>
-      </section>
-      <!--  add class="move"  for animation start-->
-      <div class="clouds">
-        <img id="big" class="move" src="big_cloud.svg" alt="" />
-        <img id="small" class="move_small" src="small_cloud.svg" alt="" />
-      </div>
+          <article class="user_inputs">
+            <input type="text" class="url_input" placeholder="Copy site url here" />
+            <div class="inputs_bottom">
+              <div class="dropdown_industry">
+                <button class="dropbtn_industry">Select industry</button>
 
-      <div class="line">
-        <img id="line" class="move_line" src="line.svg" alt="" />
-      </div>
-      <img class="mountains" src="assets/graphical-elements/mountains.svg" alt="">
-    </div>
-
-    <section id="why_section">
-      <h2>Why care?</h2>
-      <hr />
-      <div class="fact_why-section">
-        <h2>The internet consumes a lot of electricity. 416.2TWh per year to be precise. To give you some perspective,
-          that’s more than the entire United Kingdom.</h2>
-      </div>
-    </section>
-
-    <section class="report">
-      <a href="https://www.kea.dk" id="main-url">www.kea.dk</a>
-      <div class="ranking">
-        <h2>Your website is cleaner than <strong data-field="cleaner-than" class="negative">30%</strong> of the websites we tested in the industry. You can easily make it <strong data-field="potential" class="positive">45%</strong> cleaner.!</h2>
-      </div>
-      <div class="biggest-improvement">
-        <h2>Biggest areas of improvement</h2>
-        <div class="sectors"></div>
-      </div>
-      <div class="overview">
-        <h3>This site emits: <strong class="negative" data-field="co-per-view"> 1.76 grams CO2 per page view</strong></h3>
-        <h3>This site emits: <strong class="negative" data-field="energy-per-thousand">380kWh of energy for every 1000 visitors</strong></h3>
-        <div class="comparison">
-          <h3 data-field="comparison-text">With 10'000 monthly visitors, this website emits <strong data-value="grams">100g of CO2</strong>, the same as 1 cotton t-shirt, every month.</h3>
+                <div class="dropdown-content">
+                  <button class="filter_industry" data-filter="Food">Agriculture / Food Production</button>
+                  <button class="filter_industry" data-filter="Finance">The financial sector</button>
+                  <button class="filter_industry" data-filter="Clothing">Clothing and fashion industry</button>
+                  <button class="filter_industry" data-filter="Tech">Tech and computer industry</button>
+                  <button class="filter_industry" data-filter="Construction">Construction industry</button>
+                  <button class="filter_industry" data-filter="Transport">Transport sector</button>
+                  <button class="filter_industry" data-filter="Entertainment">Culture, sports and the entertainment industry</button>
+                  <button class="filter_industry" data-filter="Hotel">Hotel and restaurant industry</button>
+                  <button class="filter_industry" data-filter="Energy">The energy sector</button>
+                  <button class="filter_industry" data-filter="Retail">Retail industry</button>
+                </div>
+              </div>
+              <button class="calculate_btn">Calculate</button>
+            </div>
+            <p>By using this carbon tracker, you agree to the information that you submit being stored and published in our public database.</p>
+          </article>
+        </section>
+        <!--  add class="move"  for animation start-->
+        <div class="clouds">
+          <img id="big" class="move" src="big_cloud.svg" alt="" />
+          <img id="small" class="move_small" src="small_cloud.svg" alt="" />
+        </div> 
+        <div class="line">
+          <img id="line" class="move_line" src="line.svg" alt="" />
         </div>
-      </div>     
-      <div class="improvements">
-        <h2>Points to improve:</h2> 
+        <img class="mountains" src="assets/graphical-elements/mountains.svg" alt="" />
+      </div>
+      <section id="why_section">
+        <h2>Why care?</h2>
+        <hr />
+        <div class="fact_why-section">
+          <h2>The internet consumes a lot of electricity. 416.2TWh per year to be precise. To give you some perspective, that’s more than the entire United Kingdom.</h2>
+        </div>
+      </section>
+
+      <section class="report">
+        <a href="https://www.kea.dk" id="main-url">www.kea.dk</a>
+        <div class="ranking">
+          <h2>Your website is cleaner than <strong data-field="cleaner-than" class="negative">30%</strong> of the websites we tested in the industry. You can easily make it <strong data-field="potential" class="positive">45%</strong> cleaner.!</h2>
+        </div>
+        <div class="biggest-improvement">
+          <h2>Biggest areas of improvement</h2>
+          <div class="sectors"></div>
+        </div>
+        <div class="overview">
+          <h3>This site emits: <strong class="negative" data-field="co-per-view"> 1.76 grams CO2 per page view</strong></h3>
+          <h3>This site emits: <strong class="negative" data-field="energy-per-thousand">380kWh of energy for every 1000 visitors</strong></h3>
+          <div class="comparison">
+            <h3 data-field="comparison-text">With 10'000 monthly visitors, this website emits <strong data-value="grams">100g of CO2</strong>, the same as 1 cotton t-shirt, every month.</h3>
+          </div>
+        </div>     
+        <div class="improvements">
+          <h2>Points to improve:</h2>
+          <div class="sectors"></div>
+        </div>
+
         <article id="unminified-js">
           <div class="chart-container pie-chart">
             <canvas class="chart"></canvas>
@@ -156,17 +156,17 @@
             <div class="toggle-container">
               <p>green host</p>
               <label class="switch">
-                <input type="checkbox" value="checked"/>
+                <input type="checkbox" value="checked" />
                 <div></div>
               </label>
             </div>
-            <hr>
+            <hr />
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
               <strong data-field="size-vals"></strong>
             </p>
           </div>
-        </article> 
+        </article>
         <article id="offscreen-resources">
           <div class="chart-container">
             <canvas class="chart"></canvas>
@@ -184,22 +184,37 @@
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus <strong data-field="size-vals"></strong> of the full page size, nascetur ridiculus mus. Donec quam felis, </p>
           </div>
         </article>
-      </div>
-    </section>
-  </main>
-  <footer></footer>
+      </section>
 
-  <template id="mostImportantTemplate">
-    <div class="improvement-sector">
-      <div class="chart-container chart-middle-text">
-        <canvas class="chart"></canvas>
-        <h3 data-field="number"></h3>
-      </div>
-      <h4 data-field="title"></h4>
-    </div>
-  </template>
-  <script type="module" src="/main.js"></script>
-  <script type="module" src="./scripts/functionalities.js"></script>
-</body>
+      <section id="share">
+        <h2>Share the result</h2>
+        <article class="url_section">
+          <input type="text" class="generated_url" />
+          <img src="clipboard.png" alt="clipboard icon" />
+        </article>
+        <article class="media_section">
+          <h2>Share the result on social media</h2>
+          <div class="so-me">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer></footer>
 
+    <template id="mostImportantTemplate">
+      <div class="improvement-sector">
+        <div class="chart-container chart-middle-text">
+          <canvas class="chart"></canvas>
+          <h3 data-field="number"></h3>
+        </div>
+        <h4 data-field="title"></h4>
+      </div>
+    </template>
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="./scripts/functionalities.js"></script>
+  </body>
 </html>

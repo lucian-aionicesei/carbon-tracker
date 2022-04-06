@@ -136,7 +136,7 @@ function createImprovementAreas(areaData) {
     for (let i = 0; i < areaData.length; i++) {
         let newSector = template.content.cloneNode(true);
         newSector.querySelector("[data-field=title]").textContent = areaData[i].title;
-        newSector.querySelector(".chart-middle-text [data-field=number]").textContent = areaData[i].percentageData[0];
+        newSector.querySelector("[data-field=number]").textContent = areaData[i].percentageData[0];
 
         let chart = createDonutChart(areaData[i].percentageData, newSector.querySelector("canvas.chart"));
 
