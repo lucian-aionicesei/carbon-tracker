@@ -43,7 +43,7 @@ nav {
 }
 
 .nav_links {
-//   display: none;
+  //   display: none;
   justify-content: space-around;
   width: auto;
   margin-left: auto;
@@ -391,6 +391,65 @@ h1 {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+// .................. Share section ..................
+
+#share {
+  background-color: abstract.$primary-color1;
+  padding-top: 4rem;
+  display: grid;
+  justify-content: center;
+}
+
+#share h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.generated_url {
+  margin-top: 2rem;
+  font-size: 1rem;
+  border: 1px solid #ffff;
+  background-color: #14142c;
+  border-radius: 42px;
+  width: 85%;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  color: #ffff;
+  padding-left: 1rem;
+}
+
+.url_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.url_section img {
+  cursor: pointer;
+  display: inline;
+  margin-bottom: -1rem;
+  padding-left: 1rem;
+  width: 3rem;
+  height: 2rem;
+}
+
+.media_section {
+  margin-top: 2rem;
+}
+
+.so-me {
+  margin-block: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.so-me i {
+  font-size: 3rem;
+  color: #ffff;
+  cursor: pointer;
 }
 
 // .................. Media queries ..................

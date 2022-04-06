@@ -74,7 +74,7 @@ function calculate() {
   // Show loading animation
   document.querySelector(".center").style.display = "flex";
 
-  const firstFact = Math.floor(Math.random() * 5 + 1);
+  const firstFact = Math.floor(Math.random() * 9 + 1);
 
   const factText = document.querySelector(".center p");
 
@@ -90,17 +90,25 @@ function calculate() {
 
   const fact5 = "Pornography accounts for a third of video streaming traffic, generating as much carbon dioxide as Belgium in a year.";
 
-  const facts = [fact1, fact2, fact3, fact4, fact5];
+  const fact6 = "One hour of Netflix consumes 6.1 kilowatt hours (kWh) of electricity. This is enough to drive a Tesla Model S more than 30km.";
+
+  const fact7 = "Online videos alone account for almost 60 percent of global data transfer.";
+
+  const fact8 = "There are over 4 billion internet users as of January 2021, an increase of over 7 percent compared to the previous year.";
+
+  const fact9 = "Computing is expected to account for up to 8% of global power demand by 2030.";
+
+  const facts = [fact1, fact2, fact3, fact4, fact5, fact6, fact7, fact8, fact9];
 
   console.log(facts);
 
   factText.textContent = facts[firstFact];
 
-  setInterval(changeFact, 4000);
+  setInterval(changeFact, 6500);
 
   function changeFact() {
     console.log("changeFact");
-    const randomFact = Math.floor(Math.random() * 5 + 1);
+    const randomFact = Math.floor(Math.random() * 9 + 1);
 
     factText.textContent = facts[randomFact];
     console.log(randomFact);
@@ -108,3 +116,26 @@ function calculate() {
     console.log();
   }
 }
+
+function share() {
+  console.log("share");
+  // Ramdon URL example:
+  // https://www.carbon-tracker.app/report=id_487474743
+
+  // Generate random id nr.
+  let idNumber = Math.floor(Math.random() * 200000 + 1);
+
+  document.querySelector(".generated_url").value = "https://www.carbon-tracker.app/report=id_" + idNumber;
+
+  document.querySelector(".url_section img").addEventListener("click", copyClipboard);
+}
+
+function copyClipboard() {
+  console.log("copyClipboard");
+
+  document.querySelector(".generated_url").select();
+
+  document.execCommand("Copy");
+}
+
+share();
