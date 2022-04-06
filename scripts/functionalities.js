@@ -7,7 +7,6 @@ const burger = document.querySelector(".burger");
 const links = document.querySelector(".nav_links");
 
 function setup() {
-  document.querySelector(".dropbtn_industry").addEventListener("click", showContent);
 
   // Burger menu
   burger.addEventListener("click", toggle);
@@ -16,36 +15,12 @@ function setup() {
   burger.addEventListener("mouseout", done);
   const logo = document.querySelector(".logo");
 
-  // Close dropdown content if user clicks outside of it
-  document.addEventListener("mouseup", function (e) {
-    const container_content = document.querySelector(".dropdown-content");
-    if (!container_content.contains(e.target)) {
-      container_content.classList.remove("flex");
-      document.querySelector(".dropbtn_industry").classList.remove("changeArrow");
-    }
-  });
-
-  // Eventlistener on dropdown options
-  let allIndustryOptions = document.querySelectorAll(".filter_industry");
-  allIndustryOptions.forEach((industryOption) => {
-    industryOption.addEventListener("click", getIndustry);
-  });
-
-  document.querySelector(".calculate_btn").addEventListener("click", calculate);
+  // document.querySelector("#url-input-form").addEventListener("oninput", calculate);
 }
 
 function getIndustry(industryOption) {
   // Get option value
-  const industryChoice = industryOption.target.getAttribute("data-filter");
-  console.log(industryChoice);
-  document.querySelector(".dropbtn_industry").textContent = industryChoice;
-  document.querySelector(".dropdown-content").classList.remove("flex");
-  document.querySelector(".dropbtn_industry").classList.remove("changeArrow");
-}
 
-function showContent() {
-  document.querySelector(".dropdown-content").classList.toggle("flex");
-  document.querySelector(".dropbtn_industry").classList.toggle("changeArrow");
 }
 
 function toggle() {
@@ -63,11 +38,12 @@ function toggle() {
 function over() {
   burger.classList.add("hover");
 }
+
 function done() {
   burger.classList.remove("hover");
 }
 
-function calculate() {
+export function loadingScreen() {
   // Hide input section
   document.querySelector("#input_section").style.display = "none";
 
@@ -100,7 +76,7 @@ function calculate() {
 
   const facts = [fact1, fact2, fact3, fact4, fact5, fact6, fact7, fact8, fact9];
 
-  console.log(facts);
+  // console.log(facts);
 
   factText.textContent = facts[firstFact];
 
@@ -139,3 +115,13 @@ function copyClipboard() {
 }
 
 share();
+// add "https://" extention to URL if needed
+
+export function toHttpsURL(urlInput) {
+  console.log(urlInput)
+  if (!urlInput.includes("http")){
+      return `https://${urlInput}`
+  } else {
+      return urlInput;
+  }
+}

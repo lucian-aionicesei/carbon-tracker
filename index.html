@@ -16,12 +16,12 @@
         <div class="logo">
           <h3>Logo</h3>
         </div>
-
+  
         <ul class="nav_links">
           <li>
             <a href="#">Top sustainable</a>
           </li>
-
+  
           <li>
             <a href="#">How does it work?</a>
           </li>
@@ -37,35 +37,36 @@
       <div class="intro-section">
         <div class="center">
           <div class="nb-spinner"></div>
-          <p>Pornography accounts for a third of video streaming traffic, generating as much carbon dioxide as Belgium in a year.</p>
+          <p>Pornography accounts for a third of video streaming traffic, generating as much carbon dioxide as Belgium in
+            a year.</p>
         </div>
         <section id="input_section">
           <div class="h1_text">
-            <h1>Find out <br />how sustainable <br />your website is</h1>
+            <h1>Find out <br>how sustainable <br>your website is</h1>
           </div>
-          <article class="user_inputs">
-            <input type="text" class="url_input" placeholder="Copy site url here" />
+          <form id="get-url-form">
+            <input placeholder="Copy site url here" type="text" inputmode="url" name="url_input" id="url_input"
+              pattern="^(https?://)?([a-zA-Z0-9]([a-zA-ZäöüÄÖÜ0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}/?$" required /><br>
             <div class="inputs_bottom">
-              <div class="dropdown_industry">
-                <button class="dropbtn_industry">Select industry</button>
-
-                <div class="dropdown-content">
-                  <button class="filter_industry" data-filter="Food">Agriculture / Food Production</button>
-                  <button class="filter_industry" data-filter="Finance">The financial sector</button>
-                  <button class="filter_industry" data-filter="Clothing">Clothing and fashion industry</button>
-                  <button class="filter_industry" data-filter="Tech">Tech and computer industry</button>
-                  <button class="filter_industry" data-filter="Construction">Construction industry</button>
-                  <button class="filter_industry" data-filter="Transport">Transport sector</button>
-                  <button class="filter_industry" data-filter="Entertainment">Culture, sports and the entertainment industry</button>
-                  <button class="filter_industry" data-filter="Hotel">Hotel and restaurant industry</button>
-                  <button class="filter_industry" data-filter="Energy">The energy sector</button>
-                  <button class="filter_industry" data-filter="Retail">Retail industry</button>
-                </div>
-              </div>
+                <select name="select_industry" id="select_industry" required>
+                  <option selected disabled hidden value="">Select industry</option>
+                  <option value="food">Agriculture / Food production</option>
+                  <option value="finance">The financial sector</option>
+                  <option value="clothing">Clothing and fashion industry</option>
+                  <option value="tech">Tech and computer industry</option>
+                  <option value="construction">Construction industry</option>
+                  <option value="transport">Transport sector</option>
+                  <option value="entertainment">Culture, sports and the entertainment</option>
+                  <option value="hotel">Hotel and restaurant industry</option>
+                  <option value="energy">The energy sector</option>
+                  <option value="retail">Retail industry</option>
+                </select>
               <button class="calculate_btn">Calculate</button>
             </div>
-            <p>By using this carbon tracker, you agree to the information that you submit being stored and published in our public database.</p>
-          </article>
+            <p class="disclaimer">By using this carbon tracker, you agree to the information that you submit being stored
+              and published in
+              our public database.</p>
+          </form>
         </section>
         <!--  add class="move"  for animation start-->
         <div class="clouds">
