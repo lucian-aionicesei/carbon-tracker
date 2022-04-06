@@ -68,8 +68,6 @@ nav {
 /*  .......... logo ......... */
 
 .logo {
-  letter-spacing: 5px;
-  font-size: 1.1rem;
   color: abstract.$text-color;
   transition: ease-in 0.1s;
   cursor: pointer;
@@ -371,7 +369,6 @@ h1 {
 
 #share h2 {
   text-align: center;
-  font-size: 2rem;
 }
 
 .generated_url {
