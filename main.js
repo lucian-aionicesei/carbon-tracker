@@ -34,7 +34,7 @@ async function calculate() {
     let urlInput = inputUrl.elements.url_input.value;
     let selectedIndustry = inputUrl.elements.select_industry.value;
 
-    urlInput = new URL(toHttpsURL(urlInput));
+    urlInput = toHttpsURL(urlInput);
 
     console.log(urlInput, selectedIndustry);
 
