@@ -2,6 +2,10 @@
 
 /* ................. General styling .......... */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-x: hidden;
 }
@@ -117,6 +121,41 @@ h1 {
   padding: 5px;
 }
 
+/* ............  Arrow frontpage ................ */
+
+.arrow_frontpage {
+  padding-block: 3.5rem;
+}
+
+.arrow_frontpage img {
+  max-width: 2rem;
+  transition: all 0.25s ease-in;
+}
+
+.arrow_frontpage img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.bouncing {
+  animation-name: bouncing_kf;
+  animation-duration: 1.3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes bouncing_kf {
+  from {
+    transform: translateY(1vw);
+  }
+
+  to {
+    transform: translateY(3vw);
+  }
+}
+
 /* ............  Dropdown menu ................ */
 
 #select_industry {
@@ -155,6 +194,7 @@ h1 {
   width: 60rem;
   margin: 2rem auto 0px auto;
   z-index: 10;
+  padding-top: 0;
 }
 
 .calculate_btn {
