@@ -415,10 +415,7 @@ input:invalid:not(:placeholder-shown, :focus) {
 // .................. How does it work section ..................
 
 #how_to {
-  background-color: #14142c;
   padding-block: 4rem;
-  padding-left: 10%;
-  padding-right: 10%;
 
   p {
     margin-top: 1rem;
@@ -438,10 +435,6 @@ input:invalid:not(:placeholder-shown, :focus) {
 // .................. Who made this section ..................
 
 #made_this {
-  background-color: #14142c;
-  padding-left: 10%;
-  padding-right: 10%;
-
   p {
     margin-top: 1rem;
     max-width: 60ch;
