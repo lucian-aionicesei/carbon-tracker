@@ -112,11 +112,7 @@ export function loadingScreen(status) {
 
   function changeFact() {
     console.log("changeFact");
-<<<<<<< HEAD
-    const randomFact = Math.floor(Math.random() * 9);
-=======
     const randomFact = Math.floor(Math.random() * 8 + 1);
->>>>>>> fetching-handling-api-data
 
     factText.textContent = facts[randomFact];
     console.log(randomFact);
