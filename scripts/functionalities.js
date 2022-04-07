@@ -51,12 +51,28 @@ function done() {
   burger.classList.remove("hover");
 }
 
-export function loadingScreen() {
-  // Hide input section
-  document.querySelector("#input_section").style.display = "none";
 
-  // Show loading animation
-  document.querySelector(".center").style.display = "flex";
+let factsLoop;
+
+export function loadingScreen(status) {
+
+  clearInterval(factsLoop);
+
+  console.log(status);
+  if (status === true) {
+    // Hide/show input section
+    document.querySelector("#input_section").style.display = "none";
+
+    // Show loading animation
+    document.querySelector(".center").style.display = "flex";
+  } else {
+    // Hide/show input section
+    document.querySelector("#input_section").style.display = "block";
+
+    // Show loading animation
+    document.querySelector(".center").style.display = "none";
+  }
+
 
   const firstFact = Math.floor(Math.random() * 9);
 
@@ -88,11 +104,19 @@ export function loadingScreen() {
 
   factText.textContent = facts[firstFact];
 
-  setInterval(changeFact, 6500);
+  if (status === true) {
+    factsLoop = setInterval(changeFact, 6500);
+  } else {
+    clearInterval(factsLoop);
+  }
 
   function changeFact() {
     console.log("changeFact");
+<<<<<<< HEAD
     const randomFact = Math.floor(Math.random() * 9);
+=======
+    const randomFact = Math.floor(Math.random() * 8 + 1);
+>>>>>>> fetching-handling-api-data
 
     factText.textContent = facts[randomFact];
     console.log(randomFact);
@@ -126,8 +150,10 @@ share();
 // add "https://" extention to URL if needed
 
 export function toHttpsURL(urlInput) {
-  console.log(urlInput);
-  if (!urlInput.includes("http")) {
+  console.log(urlInput)
+  if (!urlInput.includes("https://") && !urlInput.includes("www.")) {
+    return `https://www.${urlInput}`
+  } else if (!urlInput.includes("https://")) {
     return `https://${urlInput}`;
   } else {
     return urlInput;

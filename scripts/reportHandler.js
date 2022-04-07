@@ -1,23 +1,28 @@
-import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData } from "./chartsBuilder.js";
+import {
+    createCoupledBars,
+    createDonutChart,
+    createPieChart,
+    createStackedBars,
+    updateChartData
+} from "./chartsBuilder.js";
 
-export function initReport(data) {
-    const testDataImprovement = [
-        { title: "Reduce image Size", percentageData: [55, 45] },
-        { title: "Minify code", percentageData: [75, 25] },
-        { title: "Use cached files", percentageData: [27, 73] },
-    ];
-    const datasetBig = [488, 352, 330];
-    const datasetSmall = [350, 280, 250];
-    const imageNames = ["1920x1080", "450x220", "800x900"];
+export function initReport(data, industry) {
 
-    createImprovementAreas(testDataImprovement);
-    fillunMinifiedJsArticle(20, 80);
-    fillBiggestImagesArticle(datasetBig, datasetSmall, imageNames);
-    fillGreenHostArticle(0.8, 1);
-    fillOffscreenResources(80, 20);
-    fillOverviewStats(1.79, 90);
-    setComparisonText("Finance", 0.8, 10000);
-    fillRanking(0.35, 0.7);
+    console.log(data);
+
+
+    createImprovementAreas(data);
+    fillunMinifiedJsArticle(data.uselessCodeData.uselessCodeSize, data.uselessCodeData.fullCodeSize);
+    fillBiggestImagesArticle(data.imgFormatsData.theImages.currentSize, data.imgFormatsData.theImages.optimizedSize, ["", "", ""]);
+    fillGreenHostArticle(data.hostData.withGreenHost, data.hostData.withoutGreenHost);
+    fillOffscreenResources(data.offScreenResourcesData.currentSize, data.offScreenResourcesData.savingsPotential);
+    fillOverviewStats(data.cleanerThanData.gramsPerLoad, data.cleanerThanData.energyPerLoad);
+    setComparisonText(industry, data.cleanerThanData.gramsPerLoad, 10000);
+    fillRanking(data.cleanerThanData.cleanerThan, data.cleanerThanData.potential);
+
+    document.querySelector('#main-url').scrollIntoView({
+        behavior: 'smooth'
+    });
 }
 
 function fillOverviewStats(gramsPerView, energy) {
@@ -31,8 +36,8 @@ function fillRanking(cleanerThan, potential) {
     const cleanerThanElem = rankingElem.querySelector("[data-field=cleaner-than]");
     const potentialElem = rankingElem.querySelector("[data-field=potential]");
 
-    cleanerThanElem.textContent = Math.round(cleanerThan * 100) + "%";
-    if (cleanerThan > 0.5) {
+    cleanerThanElem.textContent = Math.round(cleanerThan) + "%";
+    if (cleanerThan > 50) {
         cleanerThanElem.classList.remove("negative");
         cleanerThanElem.classList.add("positive");
     } else {
@@ -40,7 +45,7 @@ function fillRanking(cleanerThan, potential) {
         cleanerThanElem.classList.add("negative");
     }
 
-    potentialElem.textContent = Math.round(potential * 100) + "%";
+    potentialElem.textContent = Math.round(potential) + "%";
 }
 
 // fills the Elements chart and the values in the text,
@@ -54,9 +59,13 @@ function fillunMinifiedJsArticle(whiteSpaceSize, minifiedSize) {
 
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [[minifiedSize]]);
+            updateChartData(chart, [
+                [minifiedSize]
+            ]);
         } else {
-            updateChartData(chart, [[minifiedSize, whiteSpaceSize]]);
+            updateChartData(chart, [
+                [minifiedSize, whiteSpaceSize]
+            ]);
         }
     });
 }
@@ -110,9 +119,15 @@ function fillOffscreenResources(fullPageSize, offscreenResourcesSize) {
     let chart = createStackedBars(canvas, [offscreenResourcesSize], [pageSizeVisible], ["offscreen resources"]);
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [[0], [pageSizeVisible]]);
+            updateChartData(chart, [
+                [0],
+                [pageSizeVisible]
+            ]);
         } else {
-            updateChartData(chart, [[offscreenResourcesSize], [pageSizeVisible]]);
+            updateChartData(chart, [
+                [offscreenResourcesSize],
+                [pageSizeVisible]
+            ]);
         }
     });
 }
@@ -124,7 +139,10 @@ function calulateDifferencesFromArrays(arrayBig, arraySmall) {
     const absolute = Math.round(sumBig - sumSmall);
     const percentage = Math.round((sumSmall / (sumBig + sumSmall)) * 100);
 
-    return { absolute, percentage };
+    return {
+        absolute,
+        percentage
+    };
 }
 
 // creates the "biggest Areas of Improvement" section,
@@ -133,15 +151,32 @@ function createImprovementAreas(areaData) {
     const parent = document.querySelector(".biggest-improvement .sectors");
     const template = document.querySelector("#mostImportantTemplate");
 
-    for (let i = 0; i < areaData.length; i++) {
-        let newSector = template.content.cloneNode(true);
-        newSector.querySelector("[data-field=title]").textContent = areaData[i].title;
-        newSector.querySelector("[data-field=number]").textContent = areaData[i].percentageData[0];
+    // modern image formats
+    let imageSector = template.content.cloneNode(true);
+    imageSector.querySelector("[data-field=title]").textContent = "Reduce image size";
+    imageSector.querySelector("[data-field=number]").textContent = areaData.imgFormatsData.imageSavings / areaData.imgFormatsData.totalImageSize * 100;
 
-        let chart = createDonutChart(areaData[i].percentageData, newSector.querySelector("canvas.chart"));
+    createDonutChart([areaData.imgFormatsData.totalImageSize, areaData.imgFormatsData.imageSavings], imageSector.querySelector("canvas.chart"));
 
-        parent.appendChild(newSector);
-    }
+    parent.appendChild(imageSector);
+
+    // minifiesd code
+    let mincodeSector = template.content.cloneNode(true);
+    mincodeSector.querySelector("[data-field=title]").textContent = "Minify code";
+    mincodeSector.querySelector("[data-field=number]").textContent = areaData.uselessCodeData.uselessCodeSize / areaData.uselessCodeData.fullCodeSize * 100;
+
+    createDonutChart([areaData.uselessCodeData.fullCodeSize, areaData.uselessCodeData.uselessCodeSize], mincodeSector.querySelector("canvas.chart"));
+
+    parent.appendChild(mincodeSector);
+
+    // Offscreen images  
+    let offscreenImages = template.content.cloneNode(true);
+    offscreenImages.querySelector("[data-field=title]").textContent = "Reduce image size";
+    offscreenImages.querySelector("[data-field=number]").textContent = areaData.offScreenResourcesData.savingsPotential / areaData.offScreenResourcesData.currentSize * 100;
+
+    createDonutChart([areaData.offScreenResourcesData.currentSize, areaData.offScreenResourcesData.savingsPotential], offscreenImages.querySelector("canvas.chart"));
+
+    parent.appendChild(offscreenImages);
 }
 
 function setSliderChangeFunc(article, onChange) {
@@ -163,34 +198,34 @@ function setComparisonText(industry, grams, visitors) {
 
 function getComparison(industry, grams, visitors) {
     switch (industry) {
-        case "Food":
+        case "food":
             return calcFood(grams, visitors);
             break;
-        case "Finance":
+        case "finance":
             return calcFinancial(grams, visitors);
             break;
-        case "Clothing":
+        case "clothing":
             return calcFashion(grams, visitors);
             break;
-        case "Tech":
+        case "tech":
             return calcTechEntertain(grams, visitors);
             break;
-        case "Construction":
+        case "construction":
             return calcConstruction(grams, visitors);
             break;
-        case "Transport":
+        case "transport":
             return calcTraffic(grams, visitors);
             break;
-        case "Entertainment":
+        case "entertainment":
             return calcTechEntertain(grams, visitors);
             break;
-        case "Hotel":
+        case "hotel":
             return calcHotel(grams, visitors);
             break;
-        case "Energy":
+        case "energy":
             return "I dont know";
             break;
-        case "Retail":
+        case "retail":
             return calcHotel(grams, visitors);
             break;
         default:
