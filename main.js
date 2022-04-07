@@ -9,7 +9,7 @@ import {
 import {
     generateCarbonResult,
     generateSpeedresult,
-    getUselessCodeData
+    collectData
 } from "./scripts/dataModel";
 
 
@@ -40,11 +40,12 @@ async function calculate() {
 
     await generateCarbonResult(urlInput);
     await generateSpeedresult(urlInput);
+    let resultsData = collectData()
+    console.log(resultsData);
+    initReport(resultsData, selectedIndustry);
 
-    
     loadingScreen(false)
     clearForm();
-    initReport();
     console.log("Data received");
     // await loadData(urlInput);
     // console.log(getUselessCodeData());
