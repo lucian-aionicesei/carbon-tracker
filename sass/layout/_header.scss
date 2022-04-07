@@ -137,8 +137,6 @@ h1 {
   position: relative;
 }
 
-
-
 .flex {
   display: flex;
   flex-direction: column;
@@ -231,7 +229,6 @@ input:invalid:not(:placeholder-shown, :focus) {
 /* ............  Why / fact section ................ */
 
 #why_section {
-
   hr {
     width: 250px;
     margin-top: 0.5rem;
@@ -412,6 +409,43 @@ input:invalid:not(:placeholder-shown, :focus) {
   to {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+// .................. How does it work section ..................
+
+#how_to {
+  background-color: #14142c;
+  padding-block: 4rem;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  p {
+    margin-top: 1rem;
+    max-width: 60ch;
+    line-height: 1.5rem;
+  }
+
+  .how_to_step {
+    margin-top: 0.5rem;
+  }
+
+  li {
+    margin-block: 0.3rem;
+  }
+}
+
+// .................. Who made this section ..................
+
+#made_this {
+  background-color: #14142c;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  p {
+    margin-top: 1rem;
+    max-width: 60ch;
+    line-height: 1.5rem;
   }
 }
 
