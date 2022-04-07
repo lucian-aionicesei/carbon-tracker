@@ -66,11 +66,11 @@ export function loadingScreen() {
 
   const fact1 = " Twenty emails a day per user over one year, create the same CO2 emissions as a car travelling 1000 km.";
 
-  const fact2 = "When browsing the web, an average internet user yearly needs about 365 kWh electricity and 2,900 litres of water, which corresponds to the CO2 that is emitted when you travel a good 1,400 km by car.";
+  const fact2 = "Research estimates that by 2025, the IT industry could use 20% of all electricity produced and emit up to 5.5% of the world’s carbon emissions.";
 
-  const fact3 = "If every adult in the UK sent one less “thank you” email, it could save 16,433 tonnes of carbon a year – the equivalent to taking 3,334 diesel cars off the road.";
+  const fact3 = "If every adult in the UK sent one less “thank you” email, it would be equivalent to taking 3,334 diesel cars off the road.";
 
-  const fact4 = " Watching online videos accounts for the biggest chunk of the world's internet traffic – 60% – and generates 300m tonnes of carbon dioxide a year, which is roughly 1% of global emissions.";
+  const fact4 = " Watching online videos accounts for roughly 1% of global emissions.";
 
   const fact5 = "Pornography accounts for a third of video streaming traffic, generating as much carbon dioxide as Belgium in a year.";
 
