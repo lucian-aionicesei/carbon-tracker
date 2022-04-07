@@ -1,15 +1,7 @@
-import {
-    createCoupledBars,
-    createDonutChart,
-    createPieChart,
-    createStackedBars,
-    updateChartData
-} from "./chartsBuilder.js";
+import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData } from "./chartsBuilder.js";
 
 export function initReport(data, industry) {
-
     console.log(data);
-
 
     createImprovementAreas(data);
     fillunMinifiedJsArticle(data.uselessCodeData.uselessCodeSize, data.uselessCodeData.fullCodeSize);
@@ -20,15 +12,15 @@ export function initReport(data, industry) {
     setComparisonText(industry, data.cleanerThanData.gramsPerLoad, 10000);
     fillRanking(data.cleanerThanData.cleanerThan, data.cleanerThanData.potential);
 
-    document.querySelector('#main-url').scrollIntoView({
-        behavior: 'smooth'
+    document.querySelector("#main-url").scrollIntoView({
+        behavior: "smooth",
     });
 }
 
 function fillOverviewStats(gramsPerView, energy) {
     const container = document.querySelector(".overview");
-    container.querySelector("[data-field=co-per-view]").textContent = `${gramsPerView} grams of CO2 per page view`;
-    container.querySelector("[data-field=energy-per-thousand]").textContent = `${energy}kWh of energy for every 1000 visitors`;
+    container.querySelector("[data-field=co-per-view]").textContent = `${gramsPerView.toFixed(2)} grams of CO2 per page view`;
+    container.querySelector("[data-field=energy-per-thousand]").textContent = `${energy.toFixed(2)}kWh of energy for every 1000 visitors`;
 }
 
 function fillRanking(cleanerThan, potential) {
@@ -59,13 +51,9 @@ function fillunMinifiedJsArticle(whiteSpaceSize, minifiedSize) {
 
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [
-                [minifiedSize]
-            ]);
+            updateChartData(chart, [[minifiedSize]]);
         } else {
-            updateChartData(chart, [
-                [minifiedSize, whiteSpaceSize]
-            ]);
+            updateChartData(chart, [[minifiedSize, whiteSpaceSize]]);
         }
     });
 }
@@ -119,15 +107,9 @@ function fillOffscreenResources(fullPageSize, offscreenResourcesSize) {
     let chart = createStackedBars(canvas, [offscreenResourcesSize], [pageSizeVisible], ["offscreen resources"]);
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [
-                [0],
-                [pageSizeVisible]
-            ]);
+            updateChartData(chart, [[0], [pageSizeVisible]]);
         } else {
-            updateChartData(chart, [
-                [offscreenResourcesSize],
-                [pageSizeVisible]
-            ]);
+            updateChartData(chart, [[offscreenResourcesSize], [pageSizeVisible]]);
         }
     });
 }
@@ -141,7 +123,7 @@ function calulateDifferencesFromArrays(arrayBig, arraySmall) {
 
     return {
         absolute,
-        percentage
+        percentage,
     };
 }
 
@@ -154,7 +136,7 @@ function createImprovementAreas(areaData) {
     // modern image formats
     let imageSector = template.content.cloneNode(true);
     imageSector.querySelector("[data-field=title]").textContent = "Reduce image size";
-    imageSector.querySelector("[data-field=number]").textContent = areaData.imgFormatsData.imageSavings / areaData.imgFormatsData.totalImageSize * 100;
+    imageSector.querySelector("[data-field=number]").textContent = Math.round((areaData.imgFormatsData.imageSavings / areaData.imgFormatsData.totalImageSize) * 100);
 
     createDonutChart([areaData.imgFormatsData.totalImageSize, areaData.imgFormatsData.imageSavings], imageSector.querySelector("canvas.chart"));
 
@@ -163,16 +145,18 @@ function createImprovementAreas(areaData) {
     // minifiesd code
     let mincodeSector = template.content.cloneNode(true);
     mincodeSector.querySelector("[data-field=title]").textContent = "Minify code";
-    mincodeSector.querySelector("[data-field=number]").textContent = areaData.uselessCodeData.uselessCodeSize / areaData.uselessCodeData.fullCodeSize * 100;
+    mincodeSector.querySelector("[data-field=number]").textContent = Math.round((areaData.uselessCodeData.uselessCodeSize / areaData.uselessCodeData.fullCodeSize) * 100);
 
     createDonutChart([areaData.uselessCodeData.fullCodeSize, areaData.uselessCodeData.uselessCodeSize], mincodeSector.querySelector("canvas.chart"));
 
     parent.appendChild(mincodeSector);
 
-    // Offscreen images  
+    // Offscreen images
     let offscreenImages = template.content.cloneNode(true);
     offscreenImages.querySelector("[data-field=title]").textContent = "Reduce image size";
-    offscreenImages.querySelector("[data-field=number]").textContent = areaData.offScreenResourcesData.savingsPotential / areaData.offScreenResourcesData.currentSize * 100;
+    offscreenImages.querySelector("[data-field=number]").textContent = Math.round(
+        (areaData.offScreenResourcesData.savingsPotential / areaData.offScreenResourcesData.currentSize) * 100
+    );
 
     createDonutChart([areaData.offScreenResourcesData.currentSize, areaData.offScreenResourcesData.savingsPotential], offscreenImages.querySelector("canvas.chart"));
 
@@ -267,7 +251,7 @@ function calcConstruction(grams, visitors) {
 function calcTraffic(grams, visitors) {
     const dieselKm = ((grams * visitors) / 2000).toFixed(2);
 
-    return `the same as ${dieselKm} kilometers in a diesel car.`;
+    return `the same as ${dieselKm} kilometers in a diesel car`;
 }
 
 function calcHotel(grams, visitors) {
