@@ -6,10 +6,7 @@ const websiteCarbonApiUrl = "https://kea-alt-del.dk/websitecarbon/site/?url=";
 let pagespeedData;
 let WebsiteCarbonData;
 
-
-
 export async function generateCarbonResult(inputUrl) {
-
     console.log("generating webCarbon result");
 
     await fetch(websiteCarbonApiUrl + inputUrl)
@@ -20,15 +17,12 @@ export async function generateCarbonResult(inputUrl) {
             WebsiteCarbonData = data;
             console.log(data);
         })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
+        .catch((error) => {
+            console.error("There has been a problem with your fetch operation:", error);
         });
 }
 
-
-
 export async function generateSpeedresult(inputUrl) {
-
     await fetch(pagespeedUrl.replace("URLHOLDER", inputUrl))
         .then((data) => {
             return data.json();
@@ -55,7 +49,7 @@ export function getUselessCodeData() {
 
     return {
         fullCodeSize: Math.round(fullCodeSize / 1024),
-        uselessCodeSize: Math.round(uselessCodeSize / 1024)
+        uselessCodeSize: Math.round(uselessCodeSize / 1024),
     };
 }
 
@@ -65,31 +59,28 @@ export function getImgFormatsData() {
         imageSavings: 0,
         theImages: {
             currentSize: [],
-            optimizedSize: []
-        }
+            optimizedSize: [],
+        },
+    };
+
+    allImages.totalImageSize = toKilloBytes(getTotalResourceTypeSize("image"));
+    let imagePath = pagespeedData.lighthouseResult.audits["modern-image-formats"].details;
+    allImages.imageSavings = toKilloBytes(imagePath.overallSavingsBytes);
+
+    for (let i = 0; i < imagePath.items.length && i < 3; i++) {
+        allImages.theImages.currentSize[i] = toKilloBytes(imagePath.items[i].totalBytes);
+        allImages.theImages.optimizedSize[i] = toKilloBytes(imagePath.items[i].totalBytes) - toKilloBytes(imagePath.items[i].wastedWebpBytes);
     }
 
-    allImages.totalImageSize = toKilloBytes(getTotalResourceTypeSize('image'));
-    let imagePath = pagespeedData.lighthouseResult.audits['modern-image-formats'].details;
-    allImages.imageSavings = toKilloBytes(imagePath.overallSavingsBytes);
-    allImages.theImages.currentSize[0] = toKilloBytes(imagePath.items[0].totalBytes);
-    allImages.theImages.currentSize[2] = toKilloBytes(imagePath.items[2].totalBytes);
-    allImages.theImages.currentSize[1] = toKilloBytes(imagePath.items[1].totalBytes);
-    allImages.theImages.optimizedSize[0] = toKilloBytes(imagePath.items[0].totalBytes) - toKilloBytes(imagePath.items[0].wastedWebpBytes);
-    allImages.theImages.optimizedSize[1] = toKilloBytes(imagePath.items[1].totalBytes) - toKilloBytes(imagePath.items[1].wastedWebpBytes);
-    allImages.theImages.optimizedSize[2] = toKilloBytes(imagePath.items[2].totalBytes) - toKilloBytes(imagePath.items[2].wastedWebpBytes);
-
     return allImages;
-
 }
 
 function getHostInfo() {
-
     let greenHostData = {
         hasGreenHost: false,
         withGreenHost: 0,
         withoutGreenHost: 0,
-    }
+    };
 
     greenHostData.hasGreenHost = WebsiteCarbonData.green;
     greenHostData.withGreenHost = WebsiteCarbonData.statistics.co2.renewable.grams;
@@ -105,32 +96,32 @@ function cleanerThan(imgFormatsData, uselessCodeData, hostData, offScreenResourc
         energyPerLoad: 0,
         totalBytes: 0,
         totalSavings: 0,
-        potential: 0
-    }
+        potential: 0,
+    };
 
     carbonData.cleanerThan = WebsiteCarbonData.cleanerThan * 100;
     if (WebsiteCarbonData.green) {
-        carbonData.gramsPerLaod = WebsiteCarbonData.statistics.co2.renewable.grams;
+        carbonData.gramsPerLoad = WebsiteCarbonData.statistics.co2.renewable.grams;
     } else {
-        carbonData.gramsPerLaod = WebsiteCarbonData.statistics.co2.grid.grams;
+        carbonData.gramsPerLoad = WebsiteCarbonData.statistics.co2.grid.grams;
     }
 
     carbonData.energyPerLoad = WebsiteCarbonData.statistics.energy * 1000;
     carbonData.totalBytes = imgFormatsData.totalImageSize + uselessCodeData.fullCodeSize;
     carbonData.totalSavings = imgFormatsData.imageSavings + uselessCodeData.uselessCodeSize + offScreenResources.savingsPotential;
     // carbonData.potential = ((carbonData.totalSavings / carbonData.totalBytes) * 100) + ((hostData.withGreenHost / hostData.withoutGreenHost) * 100);
-    carbonData.potential = ((carbonData.totalSavings / carbonData.totalBytes) * 100) + 100 - ((hostData.withGreenHost / hostData.withoutGreenHost) * 100)
+    carbonData.potential = (carbonData.totalSavings / carbonData.totalBytes) * 100 + 100 - (hostData.withGreenHost / hostData.withoutGreenHost) * 100;
 
-    return (carbonData);
+    return carbonData;
 }
 
 function offscreenResources() {
     const offscreenImages = {
         currentSize: 0,
-        savingsPotential: 0
-    }
-    offscreenImages.currentSize = toKilloBytes(getTotalResourceTypeSize('image'));
-    offscreenImages.savingsPotential = toKilloBytes(pagespeedData.lighthouseResult.audits['offscreen-images'].details.overallSavingsBytes);
+        savingsPotential: 0,
+    };
+    offscreenImages.currentSize = toKilloBytes(getTotalResourceTypeSize("image"));
+    offscreenImages.savingsPotential = toKilloBytes(pagespeedData.lighthouseResult.audits["offscreen-images"].details.overallSavingsBytes);
 
     return offscreenImages;
 }
@@ -164,6 +155,6 @@ export function collectData() {
         uselessCodeData,
         hostData,
         offScreenResourcesData,
-        cleanerThanData
-    }
+        cleanerThanData,
+    };
 }
