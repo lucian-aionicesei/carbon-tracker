@@ -1,0 +1,86 @@
+{
+  "https://www.adviceas.dk/": {
+    "url": "https://adviceas.dk/",
+    "green": "unknown",
+    "bytes": 1838718,
+    "cleanerThan": 0.44,
+    "statistics": {
+      "adjustedBytes": 1388232.09,
+      "energy": 0.002333669851021841,
+      "co2": {
+        "grid": {
+          "grams": 1.1084931792353745,
+          "litres": 0.6165439062907153
+        },
+        "renewable": {
+          "grams": 1.004613879729281,
+          "litres": 0.5587662399054261
+        }
+      }
+    },
+    "timestamp": 1649408060
+  },
+  "https://www.kea.dk/": {
+    "url": "https://kea.dk/",
+    "green": "unknown",
+    "bytes": 2444945,
+    "cleanerThan": 0.34,
+    "statistics": {
+      "adjustedBytes": 1845933.475,
+      "energy": 0.0031030829272931442,
+      "co2": {
+        "grid": {
+          "grams": 1.4739643904642434,
+          "litres": 0.8198189939762123
+        },
+        "renewable": {
+          "grams": 1.3358359912584241,
+          "litres": 0.7429919783379355
+        }
+      }
+    },
+    "timestamp": 1649408325
+  },
+  "https://www.wholegraindigital.com/": {
+    "url": "https://www.wholegraindigital.com/",
+    "green": true,
+    "bytes": 453023,
+    "cleanerThan": 0.82,
+    "statistics": {
+      "adjustedBytes": 342032.365,
+      "energy": 0.000574969145306386,
+      "co2": {
+        "grid": {
+          "grams": 0.27311034402053336,
+          "litres": 0.15190397334422065
+        },
+        "renewable": {
+          "grams": 0.24751658146414948,
+          "litres": 0.13766872261035995
+        }
+      }
+    },
+    "timestamp": 1649410305
+  },
+  "https://www.jungwachthorw.ch/": {
+    "url": "https://www.jungwachthorw.ch/",
+    "green": true,
+    "bytes": 2721249,
+    "cleanerThan": 0.33,
+    "statistics": {
+      "adjustedBytes": 2054542.995,
+      "energy": 0.0034537633005296813,
+      "co2": {
+        "grid": {
+          "grams": 1.6405375677515985,
+          "litres": 0.9124669951834391
+        },
+        "renewable": {
+          "grams": 1.4867992349013968,
+          "litres": 0.8269577344521569
+        }
+      }
+    },
+    "timestamp": 1649411993
+  }
+}

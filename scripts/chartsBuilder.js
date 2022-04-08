@@ -2,6 +2,12 @@ import Chart from "chart.js/auto";
 
 const colors = ["#9BFFC2", "#FD7484"];
 
+let barsChart;
+let barsChart2;
+let testDonutChart;
+let pieChart;
+let pieChart2;
+
 Chart.defaults.borderWidth = 0;
 Chart.defaults.borderColor = "rgba(0, 0, 0, 0.0)";
 
@@ -10,7 +16,7 @@ export function createTestDonut() {
     const testCanvas = document.querySelector("#overall-donut-chart");
     const testData = [80, 20];
 
-    let chart = createDonutChart(testData, testCanvas);
+    testDonutChart = createDonutChart(testData, testCanvas);
 }
 
 // only used for testing, remove when real data comes into play
@@ -18,7 +24,7 @@ export function createTestPie() {
     const testCanvas = document.querySelector("#unused-script-chart");
     const testData = [80, 20];
 
-    let chart = createPieChart(testData, testCanvas);
+    pieChart = createPieChart(testData, testCanvas);
 }
 
 // only used for testing, remove when real data comes into play
@@ -28,9 +34,9 @@ export function createTestBars() {
     const testData2 = [81, 20, 40, 50, 60];
     const labels = ["file1.jpg", "test.png", "fill.mp4", "small.png", "header.png"];
 
-    let chart = createCoupledBars(testData1, testData2, labels, testCanvas);
+    barsChart = createCoupledBars(testData1, testData2, labels, testCanvas);
     setTimeout(() => {
-        updateChartData(chart, testData2);
+        updateChartData(barsChart, testData2);
     }, 2000);
 }
 
@@ -39,13 +45,11 @@ export function createDonutChart(data, canvas) {
     let donutChart = new Chart(canvas.getContext("2d"), {
         type: "doughnut",
         data: {
-            datasets: [
-                {
-                    data: data,
-                    backgroundColor: colors,
-                    borderWidth: 0,
-                },
-            ],
+            datasets: [{
+                data: data,
+                backgroundColor: colors,
+                borderWidth: 0,
+            }, ],
         },
         options: {
             cutout: "60%",
@@ -63,17 +67,15 @@ export function createDonutChart(data, canvas) {
 
 // takes a array of numbers and canvas and creates a pie Chart there
 export function createPieChart(data, canvas) {
-    let pieChart = new Chart(canvas, {
+    pieChart2 = new Chart(canvas, {
         type: "pie",
         data: {
-            datasets: [
-                {
-                    label: "ratio of used/unused Javascript",
-                    data: data,
-                    backgroundColor: colors,
-                    borderWidth: 0,
-                },
-            ],
+            datasets: [{
+                label: "ratio of used/unused Javascript",
+                data: data,
+                backgroundColor: colors,
+                borderWidth: 0,
+            }, ],
         },
         options: {
             responsive: true,
@@ -85,18 +87,17 @@ export function createPieChart(data, canvas) {
         },
     });
 
-    return pieChart;
+    return pieChart2;
 }
 
 // groups the corresponding values from dataSet1 and dataSet2 in a bar chart
 // dataSet1 and dataSet2 are arrays of numbers, labels are the group names, canvas is the element to create in.
 export function createCoupledBars(dataSet1, dataset2, labels, canvas, stacked = false) {
-    let barsChart = new Chart(canvas, {
+    barsChart2 = new Chart(canvas, {
         type: "bar",
         data: {
             labels: labels,
-            datasets: [
-                {
+            datasets: [{
                     label: "media files currently",
                     data: dataSet1,
                     backgroundColor: colors[1],
@@ -130,7 +131,7 @@ export function createCoupledBars(dataSet1, dataset2, labels, canvas, stacked = 
         },
     });
 
-    return barsChart;
+    return barsChart2;
 }
 
 export function createStackedBars(canvas, datasetBad, datasetGood, labels) {
@@ -149,4 +150,19 @@ export function updateChartData(chart, newDataSets) {
         chart.data.datasets[i].data = newDataSets[newIdx];
     }
     chart.update();
+}
+
+
+export function clearAllCharts() {
+    barsChart.destroy();
+    barsChart2.destroy();
+    testDonutChart.destroy();
+    pieChart.destroy();
+    pieChart2.destroy();
+
+    barsChart.clear();
+    barsChart2.clear();
+    testDonutChart.clear();
+    pieChart.clear();
+    pieChart2.clear();
 }

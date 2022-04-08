@@ -1,7 +1,9 @@
-import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData } from "./chartsBuilder.js";
+import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData, clearAllCharts } from "./chartsBuilder.js";
 
 export function initReport(data, industry) {
     console.log(data);
+
+    clearAllCharts;
 
     createImprovementAreas(data);
     fillunMinifiedJsArticle(data.uselessCodeData.uselessCodeSize, data.uselessCodeData.fullCodeSize);

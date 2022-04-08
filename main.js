@@ -28,6 +28,7 @@ inputUrl.addEventListener("submit", (data) => {
 async function calculate() {
 
     loadingScreen(true);
+    document.querySelector(".mainInfo").style.display = "none";
 
     console.log("calculate");
 
@@ -42,6 +43,9 @@ async function calculate() {
     await generateSpeedresult(urlInput);
     let resultsData = collectData()
     console.log(resultsData);
+    document.querySelector("#main-url h2").textContent = urlInput;
+    document.querySelector("#main-url").setAttribute("href", urlInput);
+    document.querySelector(".results").style.display = "block";
     initReport(resultsData, selectedIndustry);
 
     loadingScreen(false)

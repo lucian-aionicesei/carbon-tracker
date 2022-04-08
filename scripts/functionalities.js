@@ -148,9 +148,9 @@ share();
 export function toHttpsURL(urlInput) {
   console.log(urlInput)
   if (!urlInput.includes("https://") && !urlInput.includes("www.")) {
-    return `https://www.${urlInput}`
+    return `https://www.${urlInput}/`
   } else if (!urlInput.includes("https://")) {
-    return `https://${urlInput}`;
+    return `https://${urlInput}/`;
   } else {
     return urlInput;
   }
