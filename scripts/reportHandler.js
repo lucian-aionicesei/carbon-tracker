@@ -1,9 +1,15 @@
 import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData, clearAllCharts } from "./chartsBuilder.js";
 
+let isFirstReport = true;
+
 export function initReport(data, industry) {
     console.log(data);
 
-    clearAllCharts;
+    if (!isFirstReport) {
+        clearAllCharts();
+    }
+
+    isFirstReport = false;
 
     createImprovementAreas(data);
     fillunMinifiedJsArticle(data.uselessCodeData.uselessCodeSize, data.uselessCodeData.fullCodeSize);
@@ -134,6 +140,7 @@ function calulateDifferencesFromArrays(arrayBig, arraySmall) {
 // area data should contain a "title" and "percentageData" to Display
 function createImprovementAreas(areaData) {
     const parent = document.querySelector(".biggest-improvement .sectors");
+    parent.replaceChildren(...[]);
     const template = document.querySelector("#mostImportantTemplate");
 
     // modern image formats

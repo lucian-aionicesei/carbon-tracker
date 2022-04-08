@@ -1,17 +1,7 @@
 import "./sass/style.scss";
-import {
-    initReport
-} from "./scripts/reportHandler.js";
-import {
-    loadingScreen,
-    toHttpsURL
-} from "./scripts/functionalities.js";
-import {
-    generateCarbonResult,
-    generateSpeedresult,
-    collectData
-} from "./scripts/dataModel";
-
+import { initReport } from "./scripts/reportHandler.js";
+import { loadingScreen, toHttpsURL } from "./scripts/functionalities.js";
+import { generateCarbonResult, generateSpeedresult, collectData } from "./scripts/dataModel";
 
 window.onload = clearForm();
 
@@ -26,9 +16,7 @@ inputUrl.addEventListener("submit", (data) => {
 
 // Get url input
 async function calculate() {
-
     loadingScreen(true);
-    document.querySelector(".mainInfo").style.display = "none";
 
     console.log("calculate");
 
@@ -41,20 +29,20 @@ async function calculate() {
 
     await generateCarbonResult(urlInput);
     await generateSpeedresult(urlInput);
-    let resultsData = collectData()
+    let resultsData = collectData();
     console.log(resultsData);
     document.querySelector("#main-url h2").textContent = urlInput;
     document.querySelector("#main-url").setAttribute("href", urlInput);
+    document.querySelector(".mainInfo").style.display = "none";
     document.querySelector(".results").style.display = "block";
     initReport(resultsData, selectedIndustry);
 
-    loadingScreen(false)
+    loadingScreen(false);
     clearForm();
     console.log("Data received");
     // await loadData(urlInput);
     // console.log(getUselessCodeData());
 }
-
 
 function clearForm() {
     console.log("Window has been reloaded");
