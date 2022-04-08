@@ -85,17 +85,6 @@
         padding-bottom: 5rem;
     }
 
-    h2, h3, p{
-
-        .positive{
-            color: abstract.$positive-color;
-        }
-
-        .negative{
-            color: abstract.$negative-color;
-        }
-    }
-
     .overview, .comparison{
         display: flex;
         flex-direction: column;
@@ -113,6 +102,19 @@
         @include abstract.phone-size{
             min-height: 20vh;
         }
+
+        p{
+            display: inline;
+        }
+
+        .icon-container img{
+            height: 2.5rem;
+        }
+    }
+
+    img{
+        max-height: 100%;
+        max-width: 100%;
     }
 
     .biggest-improvement {
@@ -193,4 +195,15 @@
         }
     }
 
+}
+
+h2, h3, p{
+
+    .positive{
+        color: abstract.$positive-color;
+    }
+
+    .negative{
+        color: abstract.$negative-color;
+    }
 }

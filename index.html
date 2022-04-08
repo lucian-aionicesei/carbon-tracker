@@ -94,7 +94,11 @@
           <p class="exclamation">and uses: <strong class="negative" data-field="energy-per-thousand">380kWh of energy for every 1000 visitors</strong></p>
         </div>
         <div class="comparison">
-          <p class="exclamation" data-field="comparison-text" >With 10'000 monthly visitors, this website emits <strong data-value="grams">100g of CO2</strong>, the same as 1 cotton t-shirt, every month.</p>
+          <p class="exclamation" data-field="comparison-text">With <span data-field="visitors">10'000</span> monthly visitors, this website emits <strong data-field="grams" class="negative">100g</strong>, <span data-field="comparison">the same as 1 cotton t-shirt</span>, every month.
+            <span class="icon-container">
+              <img src="clothing.svg" alt="" srcset="">
+            </span>
+          </p>
         </div>
         <div class="improvements">
           <h2>All you could improve:</h2>
@@ -180,7 +184,12 @@
       </section>
       <section id="comparison">
         <div class="fact_container">
-          <h2>Text here that compares the website emission after the changes, based on the selected industry</h2>
+          <h2>The monthly emission from this site are now reduced from 
+            <strong class="positive" data-field="change"></strong>
+            <span class="icon-container">
+              <img class="icon" src="money.svg">
+            </span>
+          </h2>
         </div>
       </section>
       <section id="share">
