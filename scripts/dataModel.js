@@ -10,7 +10,7 @@ let WebsiteCarbonDataSaved;
 export async function generateCarbonResult(inputUrl) {
     console.log("generating webCarbon result");
 
-    await fetch('./testsites.json')
+    await fetch('../testsites.json')
         .then(response => response.json())
         .then(data => {
             WebsiteCarbonDataSaved = data;
