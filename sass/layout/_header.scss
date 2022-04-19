@@ -480,6 +480,11 @@ input:invalid:not(:placeholder-shown, :focus) {
     padding-bottom: 3rem;
     max-width: 60ch;
     line-height: 1.5rem;
+    
+    a, strong{
+      color: hotpink;
+      font-weight: bold;
+    }
   }
 }
 
