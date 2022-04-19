@@ -3,8 +3,6 @@ import { createCoupledBars, createDonutChart, createPieChart, createStackedBars,
 let isFirstReport = true;
 
 export function initReport(data, industry) {
-    console.log(data);
-
     if (!isFirstReport) {
         clearAllCharts();
     }

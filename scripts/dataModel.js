@@ -8,14 +8,11 @@ let WebsiteCarbonData;
 let WebsiteCarbonDataSaved;
 
 export async function generateCarbonResult(inputUrl) {
-    console.log("generating webCarbon result");
-
     await fetch("testsites.json")
         .then((response) => response.json())
         .then((data) => {
             WebsiteCarbonDataSaved = data;
             if (WebsiteCarbonDataSaved[inputUrl]) {
-                console.log(WebsiteCarbonDataSaved[inputUrl]);
                 WebsiteCarbonData = WebsiteCarbonDataSaved[inputUrl];
             } else {
                 fetch(websiteCarbonApiUrl + inputUrl)
@@ -24,15 +21,12 @@ export async function generateCarbonResult(inputUrl) {
                     })
                     .then((data) => {
                         WebsiteCarbonData = data;
-                        console.log(data);
                     })
                     .catch((error) => {
                         console.error("There has been a problem with your fetch operation:", error);
                     });
             }
         });
-
-    // console.log(WebsiteCarbonDataSaved.inputUrl);
 }
 
 export async function generateSpeedresult(inputUrl) {
@@ -42,7 +36,6 @@ export async function generateSpeedresult(inputUrl) {
         })
         .then((data) => {
             pagespeedData = data;
-            console.log(data);
         });
 }
 
@@ -52,7 +45,6 @@ export function getUselessCodeData() {
     let fullCodeSize = 0;
     let uselessCodeSize = 0;
     let baseNode = pagespeedData.lighthouseResult.audits;
-    // console.log(baseNode);
     fullCodeSize = getTotalResourceTypeSize("script") + getTotalResourceTypeSize("stylesheet");
 
     uselessCodeSize += baseNode["unused-javascript"].details.overallSavingsBytes;
