@@ -1,4 +1,11 @@
-import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData, clearAllCharts } from "./chartsBuilder.js";
+import {
+    createCoupledBars,
+    createDonutChart,
+    createPieChart,
+    createStackedBars,
+    updateChartData,
+    clearAllCharts
+} from "./chartsBuilder.js";
 
 let isFirstReport = true;
 
@@ -58,9 +65,13 @@ function fillunMinifiedJsArticle(whiteSpaceSize, minifiedSize) {
 
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [[minifiedSize]]);
+            updateChartData(chart, [
+                [minifiedSize]
+            ]);
         } else {
-            updateChartData(chart, [[minifiedSize, whiteSpaceSize]]);
+            updateChartData(chart, [
+                [minifiedSize, whiteSpaceSize]
+            ]);
         }
     });
 }
@@ -114,19 +125,35 @@ function fillOffscreenResources(fullPageSize, offscreenResourcesSize) {
     let chart = createStackedBars(canvas, [offscreenResourcesSize], [pageSizeVisible], ["offscreen resources"]);
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [[0], [pageSizeVisible]]);
+            updateChartData(chart, [
+                [0],
+                [pageSizeVisible]
+            ]);
         } else {
-            updateChartData(chart, [[offscreenResourcesSize], [pageSizeVisible]]);
+            updateChartData(chart, [
+                [offscreenResourcesSize],
+                [pageSizeVisible]
+            ]);
         }
     });
 }
 
 // adds up all the values in the arrays. calculates the differnece in an absolute value and a percentage value.
 function calulateDifferencesFromArrays(arrayBig, arraySmall) {
-    const sumBig = arrayBig.reduce((a, b) => a + b, 0);
-    const sumSmall = arraySmall.reduce((a, b) => a + b, 0);
-    const absolute = Math.round(sumBig - sumSmall);
-    const percentage = Math.round((sumSmall / (sumBig + sumSmall)) * 100);
+    let sumBig = arrayBig.reduce((a, b) => a + b, 0);
+    let sumSmall = arraySmall.reduce((a, b) => a + b, 0);
+
+    // console.log(sumSmall);
+
+    let absolute = Math.round(sumBig - sumSmall);
+    let percentage = 0;
+
+    if (sumBig + sumSmall === 0) {
+        percentage = 0;
+    } else {
+        percentage = Math.round((sumSmall / (sumBig + sumSmall)) * 100);
+    }
+
 
     return {
         absolute,
@@ -187,7 +214,7 @@ function setComparisonText(industry, grams, visitors) {
     // container.innerHTML = `With ${visitors} monthly visitors this website emits <strong class="negative" data-value="grams">
     //     ${Math.round(visitors * grams)} grams of CO2</strong>, ${getComparison(industry, grams, visitors)}, every month.`;
     container.querySelector("[data-field=visitors]").textContent = visitors;
-    container.querySelector("[data-field=grams]").textContent = Math.round(visitors * grams) + "grams of CO2";
+    container.querySelector("[data-field=grams]").textContent = Math.round(visitors * grams) + " grams of CO2";
     container.querySelector("[data-field=comparison]").textContent = getComparison(industry, grams, visitors);
 
     let icon = container.querySelector(".icon-container img");
@@ -376,7 +403,7 @@ function calcTechEntertainReduction(grams, visitors, reductionPercentage) {
 function calcConstruction(grams, visitors) {
     const concrete = Math.round((grams * visitors) / 0.41);
 
-    return `the same as ${concrete} cm3 of concrete`;
+    return `the same as the production of ${concrete} cm3 of concrete`;
 }
 
 function calcConstructionReduction(grams, visitors, reductionPercentage) {
@@ -391,6 +418,7 @@ function calcTraffic(grams, visitors) {
 
     return `the same as ${dieselKm} kilometers in a diesel car`;
 }
+
 function calcTrafficReduction(grams, visitors, reductionPercentage) {
     const oldDieselKm = Math.round((grams * visitors) / 2000);
     const reduceDieselKm = oldDieselKm - (oldDieselKm / 100) * reductionPercentage;
