@@ -161,7 +161,7 @@ function createImprovementAreas(areaData) {
 
     // Offscreen images
     let offscreenImages = template.content.cloneNode(true);
-    offscreenImages.querySelector("[data-field=title]").textContent = "Reduce image size";
+    offscreenImages.querySelector("[data-field=title]").textContent = "offscreen images";
     offscreenImages.querySelector("[data-field=number]").textContent = Math.round(
         (areaData.offScreenResourcesData.savingsPotential / areaData.offScreenResourcesData.currentSize) * 100
     );
@@ -223,19 +223,19 @@ function getIconName(industry) {
             return "crane.svg";
             break;
         case "transport":
-            return "money.svg";
+            return "car.svg";
             break;
         case "entertainment":
             return "screen.svg";
             break;
         case "hotel":
-            return "money.svg";
+            return "cheese.svg";
             break;
         case "energy":
             return "I dont know";
             break;
         case "retail":
-            return "cheese.svvg";
+            return "cheese.svg";
             break;
         default:
             return "car.svg";
