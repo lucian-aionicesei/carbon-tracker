@@ -1,11 +1,4 @@
-import {
-    createCoupledBars,
-    createDonutChart,
-    createPieChart,
-    createStackedBars,
-    updateChartData,
-    clearAllCharts
-} from "./chartsBuilder.js";
+import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData, clearAllCharts } from "./chartsBuilder.js";
 
 let isFirstReport = true;
 
@@ -65,13 +58,9 @@ function fillunMinifiedJsArticle(whiteSpaceSize, minifiedSize) {
 
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [
-                [minifiedSize]
-            ]);
+            updateChartData(chart, [[minifiedSize]]);
         } else {
-            updateChartData(chart, [
-                [minifiedSize, whiteSpaceSize]
-            ]);
+            updateChartData(chart, [[minifiedSize, whiteSpaceSize]]);
         }
     });
 }
@@ -125,15 +114,9 @@ function fillOffscreenResources(fullPageSize, offscreenResourcesSize) {
     let chart = createStackedBars(canvas, [offscreenResourcesSize], [pageSizeVisible], ["offscreen resources"]);
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [
-                [0],
-                [pageSizeVisible]
-            ]);
+            updateChartData(chart, [[0], [pageSizeVisible]]);
         } else {
-            updateChartData(chart, [
-                [offscreenResourcesSize],
-                [pageSizeVisible]
-            ]);
+            updateChartData(chart, [[offscreenResourcesSize], [pageSizeVisible]]);
         }
     });
 }
@@ -153,7 +136,6 @@ function calulateDifferencesFromArrays(arrayBig, arraySmall) {
     } else {
         percentage = Math.round((sumSmall / (sumBig + sumSmall)) * 100);
     }
-
 
     return {
         absolute,
@@ -358,7 +340,7 @@ function calcFoodReduction(grams, visitors, reductionPercentage) {
     const oldGOfWheat = Math.round((grams * visitors) / 0.59 / 1000);
     const reduceGOfWheat = oldGOfWheat - (oldGOfWheat / 100) * reductionPercentage;
 
-    return `${oldGOfWheat} to ${reduceGOfWheat} kilograms of wheat`;
+    return `${oldGOfWheat} to ${reduceGOfWheat.toFixed(2)} kilograms of wheat`;
 }
 
 function calcFinancial(grams, visitors) {
@@ -371,20 +353,20 @@ function calcFinancialReduction(grams, visitors, reductionPercentage) {
     const oldNumOfTransfers = Math.round((grams * visitors) / 4);
     const reduceNumOfTransfers = oldNumOfTransfers - (oldNumOfTransfers / 100) * reductionPercentage;
 
-    return `${oldNumOfTransfers} to ${reduceNumOfTransfers} bank transfers`;
+    return `${oldNumOfTransfers} to ${Math.round(reduceNumOfTransfers)} bank transfers`;
 }
 
 function calcFashion(grams, visitors) {
     const numOfShirts = ((grams * visitors) / 2000).toFixed(2);
 
-    return `the same as ${numOfShirts}`;
+    return `the same as ${numOfShirts} shirts`;
 }
 
 function calcFashionReduction(grams, visitors, reductionPercentage) {
-    const oldShirts = Math.round((grams * visitors) / 2000);
+    const oldShirts = ((grams * visitors) / 2000).toFixed(2);
     const reducedShirts = oldShirts - (oldShirts / 100) * reductionPercentage;
 
-    return `${oldShirts} to ${reducedShirts} shirts`;
+    return `${oldShirts} to ${reducedShirts.toFixed(2)} shirts`;
 }
 
 function calcTechEntertain(grams, visitors) {
@@ -397,7 +379,7 @@ function calcTechEntertainReduction(grams, visitors, reductionPercentage) {
     const oldNetflixChill = Math.round((grams * visitors) / 56);
     const reduceNetflixChill = oldNetflixChill - (oldNetflixChill / 100) * reductionPercentage;
 
-    return `${oldNetflixChill} to ${reduceNetflixChill} hours of netflix`;
+    return `${oldNetflixChill} to ${Math.round(reduceNetflixChill)} hours of netflix`;
 }
 
 function calcConstruction(grams, visitors) {
@@ -407,10 +389,10 @@ function calcConstruction(grams, visitors) {
 }
 
 function calcConstructionReduction(grams, visitors, reductionPercentage) {
-    const oldConcreteVolume = Math.round((grams * visitors) / 0.41);
+    const oldConcreteVolume = (grams * visitors) / 0.41;
     const reduceConcreteVolume = oldConcreteVolume - (oldConcreteVolume / 100) * reductionPercentage;
 
-    return `${oldConcreteVolume} to ${reduceConcreteVolume} cm3 of concrete`;
+    return `${Math.round(oldConcreteVolume)} to ${Math.round(reduceConcreteVolume)} cm3 of concrete`;
 }
 
 function calcTraffic(grams, visitors) {
@@ -420,21 +402,21 @@ function calcTraffic(grams, visitors) {
 }
 
 function calcTrafficReduction(grams, visitors, reductionPercentage) {
-    const oldDieselKm = Math.round((grams * visitors) / 2000);
+    const oldDieselKm = ((grams * visitors) / 2000).toFixed(2);
     const reduceDieselKm = oldDieselKm - (oldDieselKm / 100) * reductionPercentage;
 
-    return `${oldDieselKm} to ${reduceDieselKm} kilometers in a diesel car`;
+    return `${oldDieselKm} to ${reduceDieselKm.toFixed(2)} kilometers in a diesel car`;
 }
 
 function calcHotel(grams, visitors) {
-    const cheese = Math.round((grams * visitors) / 9);
+    const cheese = ((grams * visitors) / 9).toFixed(2);
 
     return `the same as ${cheese} grams of cheese`;
 }
 
 function calcHotelReduction(grams, visitors, reductionPercentage) {
-    const oldCheese = Math.round((grams * visitors) / 9);
+    const oldCheese = ((grams * visitors) / 9).toFixed(2);
     const reduceCheese = oldCheese - (oldCheese / 100) * reductionPercentage;
 
-    return `${oldCheese} to ${reduceCheese} grams of cheese`;
+    return `${oldCheese} to ${reduceCheese.toFixed(2)} grams of cheese`;
 }
