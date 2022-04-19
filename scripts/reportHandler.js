@@ -1,4 +1,11 @@
-import { createCoupledBars, createDonutChart, createPieChart, createStackedBars, updateChartData, clearAllCharts } from "./chartsBuilder.js";
+import {
+    createCoupledBars,
+    createDonutChart,
+    createPieChart,
+    createStackedBars,
+    updateChartData,
+    clearAllCharts
+} from "./chartsBuilder.js";
 
 let isFirstReport = true;
 
@@ -58,9 +65,13 @@ function fillunMinifiedJsArticle(whiteSpaceSize, minifiedSize) {
 
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [[minifiedSize]]);
+            updateChartData(chart, [
+                [minifiedSize]
+            ]);
         } else {
-            updateChartData(chart, [[minifiedSize, whiteSpaceSize]]);
+            updateChartData(chart, [
+                [minifiedSize, whiteSpaceSize]
+            ]);
         }
     });
 }
@@ -114,9 +125,15 @@ function fillOffscreenResources(fullPageSize, offscreenResourcesSize) {
     let chart = createStackedBars(canvas, [offscreenResourcesSize], [pageSizeVisible], ["offscreen resources"]);
     setSliderChangeFunc(article, (event) => {
         if (event.target.checked) {
-            updateChartData(chart, [[0], [pageSizeVisible]]);
+            updateChartData(chart, [
+                [0],
+                [pageSizeVisible]
+            ]);
         } else {
-            updateChartData(chart, [[offscreenResourcesSize], [pageSizeVisible]]);
+            updateChartData(chart, [
+                [offscreenResourcesSize],
+                [pageSizeVisible]
+            ]);
         }
     });
 }
@@ -153,29 +170,29 @@ function createImprovementAreas(areaData) {
     // modern image formats
     let imageSector = template.content.cloneNode(true);
     imageSector.querySelector("[data-field=title]").textContent = "Reduce image size";
-    imageSector.querySelector("[data-field=number]").textContent = Math.round((areaData.imgFormatsData.imageSavings / areaData.imgFormatsData.totalImageSize) * 100);
+    imageSector.querySelector("[data-field=number]").textContent = `${Math.round((areaData.imgFormatsData.imageSavings / areaData.imgFormatsData.totalImageSize) * 100)}%`;
 
-    createDonutChart([areaData.imgFormatsData.totalImageSize, areaData.imgFormatsData.imageSavings], imageSector.querySelector("canvas.chart"));
+    createDonutChart([areaData.imgFormatsData.totalImageSize - areaData.imgFormatsData.imageSavings, areaData.imgFormatsData.imageSavings], imageSector.querySelector("canvas.chart"));
 
     parent.appendChild(imageSector);
 
     // minifiesd code
     let mincodeSector = template.content.cloneNode(true);
     mincodeSector.querySelector("[data-field=title]").textContent = "Minify code";
-    mincodeSector.querySelector("[data-field=number]").textContent = Math.round((areaData.uselessCodeData.uselessCodeSize / areaData.uselessCodeData.fullCodeSize) * 100);
+    mincodeSector.querySelector("[data-field=number]").textContent = `${Math.round((areaData.uselessCodeData.uselessCodeSize / areaData.uselessCodeData.fullCodeSize) * 100)}%`;
 
-    createDonutChart([areaData.uselessCodeData.fullCodeSize, areaData.uselessCodeData.uselessCodeSize], mincodeSector.querySelector("canvas.chart"));
+    createDonutChart([areaData.uselessCodeData.fullCodeSize - areaData.uselessCodeData.uselessCodeSize, areaData.uselessCodeData.uselessCodeSize], mincodeSector.querySelector("canvas.chart"));
 
     parent.appendChild(mincodeSector);
 
     // Offscreen images
     let offscreenImages = template.content.cloneNode(true);
-    offscreenImages.querySelector("[data-field=title]").textContent = "offscreen images";
-    offscreenImages.querySelector("[data-field=number]").textContent = Math.round(
+    offscreenImages.querySelector("[data-field=title]").textContent = "Offscreen images";
+    offscreenImages.querySelector("[data-field=number]").textContent = `${Math.round(
         (areaData.offScreenResourcesData.savingsPotential / areaData.offScreenResourcesData.currentSize) * 100
-    );
+    )}%`;
 
-    createDonutChart([areaData.offScreenResourcesData.currentSize, areaData.offScreenResourcesData.savingsPotential], offscreenImages.querySelector("canvas.chart"));
+    createDonutChart([areaData.offScreenResourcesData.currentSize - areaData.offScreenResourcesData.savingsPotential, areaData.offScreenResourcesData.savingsPotential], offscreenImages.querySelector("canvas.chart"));
 
     parent.appendChild(offscreenImages);
 }
