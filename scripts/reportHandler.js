@@ -189,7 +189,7 @@ function setComparisonText(industry, grams, visitors) {
     // container.innerHTML = `With ${visitors} monthly visitors this website emits <strong class="negative" data-value="grams">
     //     ${Math.round(visitors * grams)} grams of CO2</strong>, ${getComparison(industry, grams, visitors)}, every month.`;
     container.querySelector("[data-field=visitors]").textContent = visitors;
-    container.querySelector("[data-field=grams]").textContent = Math.round(visitors * grams) + " of CO2";
+    container.querySelector("[data-field=grams]").textContent = Math.round(visitors * grams) + "grams of CO2";
     container.querySelector("[data-field=comparison]").textContent = getComparison(industry, grams, visitors);
 
     let icon = container.querySelector(".icon-container img");
