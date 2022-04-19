@@ -307,7 +307,7 @@ function getReductionComparison(industry, grams, visitors) {
             return calcTechEntertainReduction(grams, visitors, reduction);
             break;
         case "hotel":
-            return calcHotel(grams, visitors, reduction);
+            return calcHotelReduction(grams, visitors, reduction);
             break;
         case "energy":
             return "I dont know";
@@ -316,7 +316,7 @@ function getReductionComparison(industry, grams, visitors) {
             return calcHotelReduction(grams, visitors, reduction);
             break;
         default:
-            return calcTraffic(grams, visitors, reduction);
+            return calcTrafficReduction(grams, visitors, reduction);
             break;
     }
 }
@@ -324,14 +324,14 @@ function getReductionComparison(industry, grams, visitors) {
 function calcFood(grams, visitors) {
     const gOfWheat = Math.round((grams * visitors) / 0.59 / 1000);
 
-    return `the same as ${gOfWheat} kilograms of Wheat`;
+    return `the same as ${gOfWheat} kilograms of wheat`;
 }
 
 function calcFoodReduction(grams, visitors, reductionPercentage) {
     const oldGOfWheat = Math.round((grams * visitors) / 0.59 / 1000);
     const reduceGOfWheat = oldGOfWheat - (oldGOfWheat / 100) * reductionPercentage;
 
-    return `${oldGOfWheat} to ${reduceGOfWheat} grams of Wheat`;
+    return `${oldGOfWheat} to ${reduceGOfWheat} kilograms of wheat`;
 }
 
 function calcFinancial(grams, visitors) {
@@ -357,7 +357,7 @@ function calcFashionReduction(grams, visitors, reductionPercentage) {
     const oldShirts = Math.round((grams * visitors) / 2000);
     const reducedShirts = oldShirts - (oldShirts / 100) * reductionPercentage;
 
-    return `${oldShirts} to ${reducedShirts} number of shirts`;
+    return `${oldShirts} to ${reducedShirts} shirts`;
 }
 
 function calcTechEntertain(grams, visitors) {
